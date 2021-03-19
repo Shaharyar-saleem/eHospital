@@ -23,6 +23,11 @@ namespace eHospital.Controllers
             return View();
         }
 
+        public ActionResult IndexPatient()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             return View();

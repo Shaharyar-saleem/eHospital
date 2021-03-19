@@ -295,6 +295,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <None Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\IndexDoctor.cshtml" />
+    <Content Include="Views\Home\IndexPatient.cshtml" />
     <None Include="Views\Home\Services.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
@@ -314,6 +315,7 @@
     <Content Include="Views\Home\IndexCustomer.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutDoctor.cshtml" />
+    <Content Include="Views\Shared\_LayoutPatient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
