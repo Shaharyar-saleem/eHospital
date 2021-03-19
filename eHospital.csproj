@@ -120,7 +120,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -295,11 +294,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <None Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\IndexDoctor.cshtml" />
     <None Include="Views\Home\Services.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\SingleBlog.cshtml" />
-    <None Include="Views\Admin\IndexDashboard.cshtml" />
+    <None Include="Views\Home\IndexAdmin.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -312,7 +312,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Home\IndexCustomer.cshtml" />
-    <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutDoctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
