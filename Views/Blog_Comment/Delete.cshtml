@@ -1,0 +1,64 @@
+﻿@model eHospital.Models.Blog_Comment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Blog_Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Blog.BLOG_TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blog.BLOG_TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BLOG_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BLOG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMMENT_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMENT_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMMENT_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMENT_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMMENT_MESSAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMENT_MESSAGE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<eHospital.Models.Blog_Comment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Blog.BLOG_TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BLOG_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMMENT_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMMENT_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMMENT_MESSAGE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blog.BLOG_TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BLOG_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMMENT_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMMENT_EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMMENT_MESSAGE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.COMMENT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.COMMENT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.COMMENT_ID })
+        </td>
+    </tr>
+}
+
+</table>

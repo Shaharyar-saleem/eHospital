@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,10 +128,40 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\Admin_RoleController.cs" />
+    <Compile Include="Controllers\AppointmentsController.cs" />
+    <Compile Include="Controllers\BlogsController.cs" />
+    <Compile Include="Controllers\Blog_CategoryController.cs" />
+    <Compile Include="Controllers\Blog_CommentController.cs" />
+    <Compile Include="Controllers\Blood_DonationController.cs" />
+    <Compile Include="Controllers\Blood_DonersController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\Doctor_ScheduleController.cs" />
+    <Compile Include="Controllers\FeedbacksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
+    <Compile Include="Controllers\Patient_TreatmentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Admin_Role.cs" />
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\Blog_Category.cs" />
+    <Compile Include="Models\Blog_Comment.cs" />
+    <Compile Include="Models\Blood_Donation.cs" />
+    <Compile Include="Models\Blood_Doners.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Doctor.cs" />
+    <Compile Include="Models\Doctor_Schedule.cs" />
+    <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Patient_Treatment.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -505,6 +543,66 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admin_Role\Create.cshtml" />
+    <Content Include="Views\Admin_Role\Delete.cshtml" />
+    <Content Include="Views\Admin_Role\Details.cshtml" />
+    <Content Include="Views\Admin_Role\Edit.cshtml" />
+    <Content Include="Views\Admin_Role\Index.cshtml" />
+    <Content Include="Views\Appointments\Create.cshtml" />
+    <Content Include="Views\Appointments\Delete.cshtml" />
+    <Content Include="Views\Appointments\Details.cshtml" />
+    <Content Include="Views\Appointments\Edit.cshtml" />
+    <Content Include="Views\Appointments\Index.cshtml" />
+    <Content Include="Views\Blogs\Create.cshtml" />
+    <Content Include="Views\Blogs\Delete.cshtml" />
+    <Content Include="Views\Blogs\Details.cshtml" />
+    <Content Include="Views\Blogs\Edit.cshtml" />
+    <Content Include="Views\Blogs\Index.cshtml" />
+    <Content Include="Views\Blog_Category\Create.cshtml" />
+    <Content Include="Views\Blog_Category\Delete.cshtml" />
+    <Content Include="Views\Blog_Category\Details.cshtml" />
+    <Content Include="Views\Blog_Category\Edit.cshtml" />
+    <Content Include="Views\Blog_Category\Index.cshtml" />
+    <Content Include="Views\Blog_Comment\Create.cshtml" />
+    <Content Include="Views\Blog_Comment\Delete.cshtml" />
+    <Content Include="Views\Blog_Comment\Details.cshtml" />
+    <Content Include="Views\Blog_Comment\Edit.cshtml" />
+    <Content Include="Views\Blog_Comment\Index.cshtml" />
+    <Content Include="Views\Blood_Donation\Create.cshtml" />
+    <Content Include="Views\Blood_Donation\Delete.cshtml" />
+    <Content Include="Views\Blood_Donation\Details.cshtml" />
+    <Content Include="Views\Blood_Donation\Edit.cshtml" />
+    <Content Include="Views\Blood_Donation\Index.cshtml" />
+    <Content Include="Views\Blood_Doners\Create.cshtml" />
+    <Content Include="Views\Blood_Doners\Delete.cshtml" />
+    <Content Include="Views\Blood_Doners\Details.cshtml" />
+    <Content Include="Views\Blood_Doners\Edit.cshtml" />
+    <Content Include="Views\Blood_Doners\Index.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Doctors\Create.cshtml" />
+    <Content Include="Views\Doctors\Delete.cshtml" />
+    <Content Include="Views\Doctors\Details.cshtml" />
+    <Content Include="Views\Doctors\Edit.cshtml" />
+    <Content Include="Views\Doctors\Index.cshtml" />
+    <Content Include="Views\Doctor_Schedule\Create.cshtml" />
+    <Content Include="Views\Doctor_Schedule\Delete.cshtml" />
+    <Content Include="Views\Doctor_Schedule\Details.cshtml" />
+    <Content Include="Views\Doctor_Schedule\Edit.cshtml" />
+    <Content Include="Views\Doctor_Schedule\Index.cshtml" />
+    <Content Include="Views\Feedbacks\Create.cshtml" />
+    <Content Include="Views\Feedbacks\Delete.cshtml" />
+    <Content Include="Views\Feedbacks\Details.cshtml" />
+    <Content Include="Views\Feedbacks\Edit.cshtml" />
+    <Content Include="Views\Feedbacks\Index.cshtml" />
     <None Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\IndexDoctor.cshtml" />
     <Content Include="Views\Home\IndexPatient.cshtml" />
@@ -528,10 +626,19 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutDoctor.cshtml" />
     <Content Include="Views\Shared\_LayoutPatient.cshtml" />
+    <Content Include="Views\Patients\Create.cshtml" />
+    <Content Include="Views\Patients\Delete.cshtml" />
+    <Content Include="Views\Patients\Details.cshtml" />
+    <Content Include="Views\Patients\Edit.cshtml" />
+    <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Patient_Treatment\Create.cshtml" />
+    <Content Include="Views\Patient_Treatment\Delete.cshtml" />
+    <Content Include="Views\Patient_Treatment\Details.cshtml" />
+    <Content Include="Views\Patient_Treatment\Edit.cshtml" />
+    <Content Include="Views\Patient_Treatment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
