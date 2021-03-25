@@ -7,10 +7,10 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Admins", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Admin</h4>
         <hr />
@@ -52,6 +52,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ADMIN_PIC, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <input type="file" name="ADMIN_IMAGE" />
+                <img width="100px" width="100px" src="@Url.Content(Model.ADMIN_PIC)" alt="Alternate Text" />
                 @Html.EditorFor(model => model.ADMIN_PIC, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ADMIN_PIC, "", new { @class = "text-danger" })
             </div>
@@ -77,6 +79,4 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+

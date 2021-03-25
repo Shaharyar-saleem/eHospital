@@ -48,10 +48,14 @@ namespace eHospital.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ADMIN_ID,ADMIN_NAME,ADMIN_EMAIL,ADMIN_PASSWORD,ADMIN_CONTACT,ADMIN_PIC,ROLE_FID")] Admin admin)
+        public ActionResult Create(Admin admin)
         {
             if (ModelState.IsValid)
             {
+
+                admin.ADMIN_IMAGE.SaveAs(Server.MapPath("~/Account_Images/" + admin.ADMIN_IMAGE.FileName));
+                admin.ADMIN_PIC = "~/Account_Images/" + admin.ADMIN_IMAGE.FileName;
+
                 db.Admins.Add(admin);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,10 +86,15 @@ namespace eHospital.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ADMIN_ID,ADMIN_NAME,ADMIN_EMAIL,ADMIN_PASSWORD,ADMIN_CONTACT,ADMIN_PIC,ROLE_FID")] Admin admin)
+        public ActionResult Edit(Admin admin)
         {
             if (ModelState.IsValid)
             {
+                if(admin.ADMIN_IMAGE!=null)
+                {
+                    admin.ADMIN_IMAGE.SaveAs(Server.MapPath("~/Account_Images/" + admin.ADMIN_IMAGE.FileName));
+                    admin.ADMIN_PIC = "~/Account_Images/" + admin.ADMIN_IMAGE.FileName;
+                }
                 db.Entry(admin).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

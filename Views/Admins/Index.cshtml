@@ -12,24 +12,26 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Admin_Role.ROLE_NAME)
+            Role
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ADMIN_NAME)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ADMIN_EMAIL)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ADMIN_PASSWORD)
+            Password
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ADMIN_CONTACT)
+            Contact Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ADMIN_PIC)
+            Image
         </th>
-        <th></th>
+        <th>
+            Action
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -50,7 +52,7 @@
             @Html.DisplayFor(modelItem => item.ADMIN_CONTACT)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ADMIN_PIC)
+            <img width="65px" height="65px" src="@Url.Content(item.ADMIN_PIC)" alt="Alternate Text" />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ADMIN_ID }) |

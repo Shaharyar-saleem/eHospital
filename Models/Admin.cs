@@ -5,6 +5,7 @@ namespace eHospital.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Admin")]
     public partial class Admin
@@ -36,6 +37,9 @@ namespace eHospital.Models
 
         [StringLength(100)]
         public string ADMIN_PIC { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase ADMIN_IMAGE { get; set; }
 
         public int? ROLE_FID { get; set; }
 
