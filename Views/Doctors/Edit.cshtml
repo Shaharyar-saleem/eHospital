@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Doctors", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -76,8 +76,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DR_PIC, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DR_PIC, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DR_PIC, "", new { @class = "text-danger" })
+                <img width="250px" height="250px" src="@Url.Content(Model.DR_PIC)" alt="Alternate Text" />
+                <input type="file" name="DR_IMAGE" />
             </div>
         </div>
 
@@ -101,6 +101,3 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -31,32 +31,38 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="index.html">
+                        <a class="sidebar-link" href="@Url.Action("IndexAdmin","Home")">
                             <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="@Url.Action("Index","Admins")">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Accounts</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-settings.html">
-                            <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
+                        <a class="sidebar-link" href="@Url.Action("Index", "Admin_Role")">
+                            <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Role</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-invoice.html">
-                            <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Invoice</span>
+                        <a class="sidebar-link" href="@Url.Action("Index","Doctors")">
+                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Doctors</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-blank.html">
-                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+                        <a class="sidebar-link" href="@Url.Action("Index","Departments")">
+                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Department</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="@Url.Action("Index","Doctor_Schedule")">
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Doctor Schedule</span>
                         </a>
                     </li>
 

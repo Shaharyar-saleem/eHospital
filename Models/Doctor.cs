@@ -5,6 +5,7 @@ namespace eHospital.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Doctor")]
     public partial class Doctor
@@ -45,6 +46,9 @@ namespace eHospital.Models
         [Required]
         [StringLength(50)]
         public string DR_PIC { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase DR_IMAGE { get; set; }
 
         [Column(TypeName = "numeric")]
         public decimal DR_FEE { get; set; }

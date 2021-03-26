@@ -588,11 +588,6 @@
     <Content Include="Views\Departments\Details.cshtml" />
     <Content Include="Views\Departments\Edit.cshtml" />
     <Content Include="Views\Departments\Index.cshtml" />
-    <Content Include="Views\Doctors\Create.cshtml" />
-    <Content Include="Views\Doctors\Delete.cshtml" />
-    <Content Include="Views\Doctors\Details.cshtml" />
-    <Content Include="Views\Doctors\Edit.cshtml" />
-    <Content Include="Views\Doctors\Index.cshtml" />
     <Content Include="Views\Doctor_Schedule\Create.cshtml" />
     <Content Include="Views\Doctor_Schedule\Delete.cshtml" />
     <Content Include="Views\Doctor_Schedule\Details.cshtml" />
@@ -603,6 +598,11 @@
     <Content Include="Views\Feedbacks\Details.cshtml" />
     <Content Include="Views\Feedbacks\Edit.cshtml" />
     <Content Include="Views\Feedbacks\Index.cshtml" />
+    <Content Include="Views\Doctors\Create.cshtml" />
+    <Content Include="Views\Doctors\Delete.cshtml" />
+    <Content Include="Views\Doctors\Details.cshtml" />
+    <Content Include="Views\Doctors\Edit.cshtml" />
+    <Content Include="Views\Doctors\Index.cshtml" />
     <None Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\IndexDoctor.cshtml" />
     <Content Include="Views\Home\IndexPatient.cshtml" />
