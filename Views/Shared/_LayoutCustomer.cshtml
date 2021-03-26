@@ -79,9 +79,12 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href='@Url.Action("Contact","Home")'>Contact</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href='@Url.Action("LogIn","Home")'> <i class="fa fa-user"></i> &nbsp;Log In</a>
+                                        </li>
                                     </ul>
                                     <!-- Appointment Button -->
-                                    <a href="#" class="btn medilife-appoint-btn ml-30">For <span>emergencies</span> Click here</a>
+                                    <a href="@Url.Action("Create", "Patients")" class="btn medilife-appoint-btn ml-30">For <span>Patient Registration</span></a>
                                 </div>
                             </nav>
                         </div>

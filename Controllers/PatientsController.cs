@@ -55,7 +55,7 @@ namespace eHospital.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(patient);
+            return RedirectToAction("IndexCustomer");
         }
 
         // GET: Patients/Edit/5

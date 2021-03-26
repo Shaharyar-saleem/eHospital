@@ -41,6 +41,10 @@ namespace eHospital.Models
         [NotMapped]
         public HttpPostedFileBase ADMIN_IMAGE { get; set; }
 
+        [NotMapped]
+
+        public string lOGIN_AS { get; set; }
+
         public int? ROLE_FID { get; set; }
 
         public virtual Admin_Role Admin_Role { get; set; }

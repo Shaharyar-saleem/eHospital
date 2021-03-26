@@ -1924,10 +1924,17 @@ input {
     }
 .log-in-form {
     position: absolute;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 .form-page{
     height: 800px;
+}
+.select-option {
+    width: 85%;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    margin-left: 42px;
 }

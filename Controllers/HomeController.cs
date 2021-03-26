@@ -63,17 +63,57 @@ namespace eHospital.Controllers
         [HttpPost]
         public ActionResult LogIn(Admin a)
         {
-            int result = db.Admins.Where(x => x.ADMIN_EMAIL == a.ADMIN_EMAIL && x.ADMIN_PASSWORD == a.ADMIN_PASSWORD).Count();
-            if(result == 1)
+            // if admin is trying to log in
+            if(a.lOGIN_AS == "Admin")
             {
-                return RedirectToAction("IndexAdmin", "Home");
+                int result = db.Admins.Where(x => x.ADMIN_EMAIL == a.ADMIN_EMAIL && x.ADMIN_PASSWORD == a.ADMIN_PASSWORD).Count();
+                if (result == 1)
+                {
+                    return RedirectToAction("IndexAdmin", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Email or Password is wrong";
+                    return View();
+                }
             }
+
+            // if Doctor is trying to log in
+
+            if (a.lOGIN_AS == "Doctor")
+            {
+                int result = db.Doctors.Where(x => x.DR_EMAIL == a.ADMIN_EMAIL && x.DR_PASSWORD == a.ADMIN_PASSWORD).Count();
+                if (result == 1)
+                {
+                    return RedirectToAction("IndexDoctor", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Email or Password is wrong";
+                    return View();
+                }
+            }
+
+            // if Patient is trying to log in
+
+            if (a.lOGIN_AS == "Patient")
+            {
+                int result = db.Patients.Where(x => x.PATIENT_EMAIL == a.ADMIN_EMAIL && x.PATIENT_PASSWORD == a.ADMIN_PASSWORD).Count();
+                if (result == 1)
+                {
+                    return RedirectToAction("IndexPatient", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Email or Password is wrong";
+                    return View();
+                }
+            }
+
             else
             {
-                ViewBag.Message = "Email or Password is wrong";
                 return View();
             }
-            
         }
     }
 }
