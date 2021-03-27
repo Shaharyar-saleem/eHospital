@@ -1,0 +1,83 @@
+﻿@model eHospital.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENT_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_CONTACT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENT_CONTACT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENT_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENT_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENT_DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_GENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENT_GENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_CITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENT_CITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENT_PIC)
+        </dt>
+
+        <dd>
+            <img width="250px" height="250px" src="@Url.Content(Model.PATIENT_PIC)" alt="Alternate Text" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PATIENT_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,90 @@
+﻿@model eHospital.Models.Blood_Doners
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Blood_Doners</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.ADMIN_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.ADMIN_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONER_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONER_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONER_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONER_CONTACT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONER_CONTACT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONER_DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONER_DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BLOOD_GROUP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BLOOD_GROUP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONER_GENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONER_GENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONER_CITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONER_CITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONER_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONER_STATUS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DONER_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

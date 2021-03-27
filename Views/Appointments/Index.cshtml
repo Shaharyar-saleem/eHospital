@@ -1,0 +1,58 @@
+﻿@model IEnumerable<eHospital.Models.Appointment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Doctor_Schedule.AVAILABLE_DAYS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.PATIENT_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APPOINTMENT_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIME_SLOT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctor_Schedule.AVAILABLE_DAYS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.PATIENT_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APPOINTMENT_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIME_SLOT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.APPOINTMENT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.APPOINTMENT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.APPOINTMENT_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,34 @@
+﻿@model eHospital.Models.Blood_Donation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Blood_Donation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Appointment.TIME_SLOT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appointment.TIME_SLOT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blood_Doners.DONER_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood_Doners.DONER_NAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DONATION_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

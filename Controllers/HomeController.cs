@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eHospital.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace eHospital.Controllers
 {
     public class HomeController : Controller
     {
+        Model1 db = new Model1();
         public ActionResult IndexCustomer()
         {
             return View();
@@ -51,6 +53,67 @@ namespace eHospital.Controllers
         public ActionResult Contact()
         {
             return View();
+        }
+
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LogIn(Admin a)
+        {
+            // if admin is trying to log in
+            if(a.lOGIN_AS == "Admin")
+            {
+                int result = db.Admins.Where(x => x.ADMIN_EMAIL == a.ADMIN_EMAIL && x.ADMIN_PASSWORD == a.ADMIN_PASSWORD).Count();
+                if (result == 1)
+                {
+                    return RedirectToAction("IndexAdmin", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Email or Password is wrong";
+                    return View();
+                }
+            }
+
+            // if Doctor is trying to log in
+
+            if (a.lOGIN_AS == "Doctor")
+            {
+                int result = db.Doctors.Where(x => x.DR_EMAIL == a.ADMIN_EMAIL && x.DR_PASSWORD == a.ADMIN_PASSWORD).Count();
+                if (result == 1)
+                {
+                    return RedirectToAction("IndexDoctor", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Email or Password is wrong";
+                    return View();
+                }
+            }
+
+            // if Patient is trying to log in
+
+            if (a.lOGIN_AS == "Patient")
+            {
+                int result = db.Patients.Where(x => x.PATIENT_EMAIL == a.ADMIN_EMAIL && x.PATIENT_PASSWORD == a.ADMIN_PASSWORD).Count();
+                if (result == 1)
+                {
+                    return RedirectToAction("IndexPatient", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Email or Password is wrong";
+                    return View();
+                }
+            }
+
+            else
+            {
+                return View();
+            }
         }
     }
 }

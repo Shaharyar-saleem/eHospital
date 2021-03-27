@@ -1,0 +1,51 @@
+﻿@model eHospital.Models.Patient_Treatment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient_Treatment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Appointment.TIME_SLOT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appointment.TIME_SLOT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SYMPTOMS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SYMPTOMS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPTION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TREATMENT_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

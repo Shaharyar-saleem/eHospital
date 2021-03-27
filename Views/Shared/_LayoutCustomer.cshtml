@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" ~/Content="">
-    <meta http-equiv="X-UA-Compatible" ~/Content="IE=edge">
-    <meta name="viewport" ~/Content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" ~ /Content ="">
+    <meta http-equiv="X-UA-Compatible" ~ /Content ="IE=edge">
+    <meta name="viewport" ~ /Content ="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head ~/Content must come *after* these tags -->
     <!-- Title  -->
     <title>Medilife - Health &amp; Medical Template | Home</title>
@@ -16,8 +16,6 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="~/Content/Customer/style.css">
-    <link href="~/~/Content/" rel="stylesheet" />
-
 </head>
 
 <body>
@@ -64,7 +62,7 @@
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href='@Url.Action("SingleBlog","Home")'>Single Blog</a>
-                                                
+
                                             </div>
                                         </li>
                                         <li class="nav-item">
@@ -79,9 +77,12 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href='@Url.Action("Contact","Home")'>Contact</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href='@Url.Action("LogIn","Home")'> <i class="fa fa-user"></i> &nbsp;Log In</a>
+                                        </li>
                                     </ul>
                                     <!-- Appointment Button -->
-                                    <a href="#" class="btn medilife-appoint-btn ml-30">For <span>emergencies</span> Click here</a>
+                                    <a href="@Url.Action("Create", "Patients")" class="btn medilife-appoint-btn ml-30">For <span>Patient Registration</span></a>
                                 </div>
                             </nav>
                         </div>

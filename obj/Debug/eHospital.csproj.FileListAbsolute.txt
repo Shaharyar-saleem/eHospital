@@ -77,3 +77,7 @@ E:\eHospital_FYP\eHospital\obj\Debug\eHospital.csproj.CoreCompileInputs.cache
 E:\eHospital_FYP\eHospital\obj\Debug\eHospital.csproj.CopyComplete
 E:\eHospital_FYP\eHospital\obj\Debug\eHospital.dll
 E:\eHospital_FYP\eHospital\obj\Debug\eHospital.pdb
+E:\eHospital_FYP\eHospital\bin\EntityFramework.dll
+E:\eHospital_FYP\eHospital\bin\EntityFramework.SqlServer.dll
+E:\eHospital_FYP\eHospital\bin\EntityFramework.xml
+E:\eHospital_FYP\eHospital\bin\EntityFramework.SqlServer.xml
