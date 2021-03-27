@@ -5,6 +5,7 @@ namespace eHospital.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Patient")]
     public partial class Patient
@@ -46,6 +47,13 @@ namespace eHospital.Models
 
         [StringLength(100)]
         public string PATIENT_PIC { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase PATIENT_IMAGE { get; set; }
+
+        [NotMapped]
+        public string PATIENT_PASSWORD_REPEAT { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }

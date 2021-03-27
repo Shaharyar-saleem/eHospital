@@ -46,16 +46,28 @@ namespace eHospital.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PATIENT_ID,PATIENT_NAME,PATIENT_CONTACT,PATIENT_EMAIL,PATIENT_PASSWORD,PATIENT_DOB,PATIENT_GENDER,PATIENT_CITY,PATIENT_PIC")] Patient patient)
+        public ActionResult Create(Patient patient)
         {
             if (ModelState.IsValid)
             {
-                db.Patients.Add(patient);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if(patient.PATIENT_PASSWORD == patient.PATIENT_PASSWORD_REPEAT)
+                {
+                    patient.PATIENT_IMAGE.SaveAs(Server.MapPath("~/Account_Images/" + patient.PATIENT_IMAGE.FileName));
+                    patient.PATIENT_PIC = "~/Account_Images/" + patient.PATIENT_IMAGE.FileName;
+                    db.Patients.Add(patient);
+                    db.SaveChanges();
+                    return RedirectToAction("LogIn", "Home");
+                    
+                }
 
-            return RedirectToAction("IndexCustomer");
+                else
+                {
+                    ViewBag.Message = "Both Passwords are not same";
+                    return RedirectToAction("Create", "Patients");
+                }
+            }
+            return RedirectToAction("IndexCustomer", "Home");
+
         }
 
         // GET: Patients/Edit/5
@@ -78,13 +90,19 @@ namespace eHospital.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PATIENT_ID,PATIENT_NAME,PATIENT_CONTACT,PATIENT_EMAIL,PATIENT_PASSWORD,PATIENT_DOB,PATIENT_GENDER,PATIENT_CITY,PATIENT_PIC")] Patient patient)
+        public ActionResult Edit(Patient patient)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(patient).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(patient.PATIENT_IMAGE != null)
+                {
+                    patient.PATIENT_IMAGE.SaveAs(Server.MapPath("~/Account_Images/" + patient.PATIENT_IMAGE.FileName));
+                    patient.PATIENT_PIC = "~/Account_Images/" + patient.PATIENT_IMAGE.FileName;
+                    db.Entry(patient).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+               
             }
             return View(patient);
         }
