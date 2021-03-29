@@ -54,11 +54,13 @@ namespace eHospital.Controllers
             {
                 db.Blood_Doners.Add(blood_Doners);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Thanks");
             }
 
             ViewBag.ADMIN_FID = new SelectList(db.Admins, "ADMIN_ID", "ADMIN_NAME", blood_Doners.ADMIN_FID);
             return View(blood_Doners);
+            
         }
 
         // GET: Blood_Doners/Edit/5
@@ -127,6 +129,11 @@ namespace eHospital.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Thanks()
+        {
+            return View();
         }
     }
 }

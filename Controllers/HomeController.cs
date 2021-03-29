@@ -126,5 +126,6 @@ namespace eHospital.Controllers
             Session["Doctor"] = null;
             return RedirectToAction("LogIn","Home");
         }
+
     }
 }

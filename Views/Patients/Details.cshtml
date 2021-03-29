@@ -1,8 +1,18 @@
 ﻿@model eHospital.Models.Patient
-
+@using eHospital.Models;
 @{
+
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+    Admin adm = (Admin)Session["Admin"];
+    if(adm != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+    }
+
 }
 
 <h2>Details</h2>

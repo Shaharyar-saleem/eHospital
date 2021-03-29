@@ -639,6 +639,7 @@
     <Content Include="Views\Patient_Treatment\Details.cshtml" />
     <Content Include="Views\Patient_Treatment\Edit.cshtml" />
     <Content Include="Views\Patient_Treatment\Index.cshtml" />
+    <Content Include="Views\Blood_Doners\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account_Images\" />

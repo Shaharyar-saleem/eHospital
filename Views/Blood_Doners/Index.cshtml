@@ -5,47 +5,40 @@
 }
 
 <h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Admin.ADMIN_NAME)
+            Donor Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DONER_NAME)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DONER_EMAIL)
+            Contact 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DONER_CONTACT)
+            DOB
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DONER_DOB)
+            Group
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BLOOD_GROUP)
+            Gender
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DONER_GENDER)
+            City
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DONER_CITY)
+            Status
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DONER_STATUS)
+            Action
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Admin.ADMIN_NAME)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.DONER_NAME)
         </td>
