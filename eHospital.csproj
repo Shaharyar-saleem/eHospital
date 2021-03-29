@@ -605,6 +605,7 @@
     <Content Include="Views\Doctors\Details.cshtml" />
     <Content Include="Views\Doctors\Edit.cshtml" />
     <Content Include="Views\Doctors\Index.cshtml" />
+    <Content Include="Views\Blood_Doners\IndexApproved.cshtml" />
     <None Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\IndexDoctor.cshtml" />
     <Content Include="Views\Home\IndexPatient.cshtml" />

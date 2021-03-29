@@ -61,12 +61,11 @@
             @Html.DisplayFor(modelItem => item.DONER_CITY)
         </td>
         <td>
-            <span class="bg-warning text-white p-1">
+            <span class="bg-success p-1 text-white">
                 @Html.DisplayFor(modelItem => item.DONER_STATUS)
             </span>
         </td>
         <td>
-            @Html.ActionLink("Approve", "Approve", new { id = item.DONER_ID }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.DONER_ID })
         </td>
     </tr>

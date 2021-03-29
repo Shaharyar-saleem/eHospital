@@ -17,7 +17,13 @@ namespace eHospital.Controllers
         // GET: Blood_Doners
         public ActionResult Index()
         {
-            var blood_Doners = db.Blood_Doners.Include(b => b.Admin);
+            var blood_Doners = db.Blood_Doners.Include(b => b.Admin).Where(x=> x.DONER_STATUS == "Pending");
+            return View(blood_Doners.ToList());
+        }
+
+        public ActionResult IndexApproved()
+        {
+            var blood_Doners = db.Blood_Doners.Include(b => b.Admin).Where(x => x.DONER_STATUS == "Approved");
             return View(blood_Doners.ToList());
         }
 
@@ -134,6 +140,15 @@ namespace eHospital.Controllers
         public ActionResult Thanks()
         {
             return View();
+        }
+
+        
+        public ActionResult Approve(int? id)
+        {
+            Blood_Doners donor = db.Blood_Doners.Where(x => x.DONER_ID == id).FirstOrDefault();
+            donor.DONER_STATUS = "Approved";
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
