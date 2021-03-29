@@ -66,9 +66,10 @@ namespace eHospital.Controllers
             // if admin is trying to log in
             if(a.lOGIN_AS == "Admin")
             {
-                int result = db.Admins.Where(x => x.ADMIN_EMAIL == a.ADMIN_EMAIL && x.ADMIN_PASSWORD == a.ADMIN_PASSWORD).Count();
-                if (result == 1)
+                Admin adm = db.Admins.Where(x => x.ADMIN_EMAIL == a.ADMIN_EMAIL && x.ADMIN_PASSWORD == a.ADMIN_PASSWORD).FirstOrDefault();
+                if (adm != null)
                 {
+                    Session["Admin"] = adm;
                     return RedirectToAction("IndexAdmin", "Home");
                 }
                 else
@@ -82,9 +83,10 @@ namespace eHospital.Controllers
 
             if (a.lOGIN_AS == "Doctor")
             {
-                int result = db.Doctors.Where(x => x.DR_EMAIL == a.ADMIN_EMAIL && x.DR_PASSWORD == a.ADMIN_PASSWORD).Count();
-                if (result == 1)
+                Doctor doc = db.Doctors.Where(x => x.DR_EMAIL == a.ADMIN_EMAIL && x.DR_PASSWORD == a.ADMIN_PASSWORD).FirstOrDefault();
+                if (doc != null)
                 {
+                    Session["Doctor"] = doc;
                     return RedirectToAction("IndexDoctor", "Home");
                 }
                 else
@@ -98,9 +100,10 @@ namespace eHospital.Controllers
 
             if (a.lOGIN_AS == "Patient")
             {
-                int result = db.Patients.Where(x => x.PATIENT_EMAIL == a.ADMIN_EMAIL && x.PATIENT_PASSWORD == a.ADMIN_PASSWORD).Count();
-                if (result == 1)
+                Patient pat = db.Patients.Where(x => x.PATIENT_EMAIL == a.ADMIN_EMAIL && x.PATIENT_PASSWORD == a.ADMIN_PASSWORD).FirstOrDefault();
+                if (pat != null)
                 {
+                    Session["Patient"] = pat;
                     return RedirectToAction("IndexPatient", "Home");
                 }
                 else
@@ -114,6 +117,14 @@ namespace eHospital.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult LogOut(Admin adm)
+        {
+            Session["Admin"] = null;
+            Session["Patient"] = null;
+            Session["Doctor"] = null;
+            return RedirectToAction("LogIn","Home");
         }
     }
 }

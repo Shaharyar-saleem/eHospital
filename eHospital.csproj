@@ -532,6 +532,8 @@
     <Content Include="Content\Doctor\assets\icon\themify-icons\fonts\themify.woff" />
     <Content Include="Content\Doctor\assets\images\auth\Thumbs.db" />
     <Content Include="Content\Doctor\assets\images\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Shaharyar.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

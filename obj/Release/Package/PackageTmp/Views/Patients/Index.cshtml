@@ -1,0 +1,72 @@
+﻿@model IEnumerable<eHospital.Models.Patient>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+             Patient Name
+        </th>
+        <th>
+            Contact
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            DOB
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PATIENT_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PATIENT_CONTACT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PATIENT_EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PATIENT_DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PATIENT_GENDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PATIENT_CITY)
+        </td>
+        <td>
+            <img width="60px" height="60px" src="@Url.Content(item.PATIENT_PIC)" alt="Alternate Text" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PATIENT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PATIENT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PATIENT_ID })
+        </td>
+    </tr>
+}
+
+</table>

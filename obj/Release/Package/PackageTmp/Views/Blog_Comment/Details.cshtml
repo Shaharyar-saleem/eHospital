@@ -1,0 +1,58 @@
+﻿@model eHospital.Models.Blog_Comment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Blog_Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Blog.BLOG_TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blog.BLOG_TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BLOG_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BLOG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMMENT_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMENT_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMMENT_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMENT_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMMENT_MESSAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMENT_MESSAGE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COMMENT_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
