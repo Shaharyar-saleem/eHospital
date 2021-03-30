@@ -645,6 +645,7 @@
   <ItemGroup>
     <Folder Include="Account_Images\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Blog_Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

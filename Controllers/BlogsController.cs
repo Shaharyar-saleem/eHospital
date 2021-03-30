@@ -49,10 +49,14 @@ namespace eHospital.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BLOG_ID,CATEGORY_FID,ADMIN_FID,BLOG_TITLE,BLOG_DISCRIPTION,BLOG_PIC,BLOG_DATE")] Blog blog)
+        public ActionResult Create(Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.BLOG_IMAGE.SaveAs(Server.MapPath("~/Blog_Images/" + blog.BLOG_IMAGE.FileName));
+                blog.BLOG_PIC = "~/Blog_Images/" + blog.BLOG_IMAGE.FileName;
+                Admin adm = (Admin)Session["Admin"];
+                blog.ADMIN_FID = adm.ADMIN_ID;
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,10 +89,19 @@ namespace eHospital.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BLOG_ID,CATEGORY_FID,ADMIN_FID,BLOG_TITLE,BLOG_DISCRIPTION,BLOG_PIC,BLOG_DATE")] Blog blog)
+        public ActionResult Edit(Blog blog)
         {
             if (ModelState.IsValid)
             {
+                if(blog.BLOG_IMAGE != null)
+                {
+                    blog.BLOG_IMAGE.SaveAs(Server.MapPath("~/Blog_Images/" + blog.BLOG_IMAGE.FileName));
+                    blog.BLOG_PIC = "~/Blog_Images/" + blog.BLOG_IMAGE.FileName;
+                    Admin admm = (Admin)Session["Admin"];
+                    blog.ADMIN_FID = admm.ADMIN_ID;
+                }
+                Admin adm = (Admin)Session["Admin"];
+                blog.ADMIN_FID = adm.ADMIN_ID;
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
