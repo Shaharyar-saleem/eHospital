@@ -147,6 +147,8 @@ namespace eHospital.Controllers
         {
             Blood_Doners donor = db.Blood_Doners.Where(x => x.DONER_ID == id).FirstOrDefault();
             donor.DONER_STATUS = "Approved";
+            Admin adm = (Admin)Session["Admin"];
+            donor.ADMIN_FID = adm.ADMIN_ID;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

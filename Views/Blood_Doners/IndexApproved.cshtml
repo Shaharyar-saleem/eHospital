@@ -14,7 +14,7 @@
             Email
         </th>
         <th>
-            Contact 
+            Contact
         </th>
         <th>
             DOB
@@ -29,6 +29,9 @@
             City
         </th>
         <th>
+            Approved By
+        </th>
+        <th>
             Status
         </th>
         <th>
@@ -37,38 +40,41 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.DONER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DONER_EMAIL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DONER_CONTACT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DONER_DOB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BLOOD_GROUP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DONER_GENDER)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DONER_CITY)
-        </td>
-        <td>
-            <span class="bg-success p-1 text-white">
-                @Html.DisplayFor(modelItem => item.DONER_STATUS)
-            </span>
-        </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.DONER_ID })
-        </td>
-    </tr>
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_NAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_EMAIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_CONTACT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_DOB)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BLOOD_GROUP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_GENDER)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_CITY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Admin.ADMIN_NAME)
+    </td>
+    <td>
+        <span class="bg-success p-1 text-white">
+            @Html.DisplayFor(modelItem => item.DONER_STATUS)
+        </span>
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = item.DONER_ID })
+    </td>
+</tr>
 }
 
 </table>
