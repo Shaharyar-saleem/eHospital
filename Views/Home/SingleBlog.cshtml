@@ -1,5 +1,11 @@
-﻿@{
+﻿@model eHospital.Models.Blog
+@using eHospital.Models;
+@{
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    Model1 db = new Model1();
+    List<Blog_Category> Cat = db.Blog_Category.ToList();
+    List<Blog> blog = db.Blogs.ToList();
+    List<Blog_Comment> comment = db.Blog_Comment.ToList();
 }
 <!-- ***** Breadcumb Area Start ***** -->
 <section class="breadcumb-area bg-img gradient-background-overlay" style="background-image: url(/Content/Customer/img/bg-img/breadcumb2.jpg);">
@@ -8,7 +14,7 @@
             <div class="col-12">
                 <div class="breadcumb-content">
                     <h3 class="breadcumb-title">News</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer</p>
+                    <p>Lates News</p>
                 </div>
             </div>
         </div>
@@ -24,87 +30,52 @@
                 <div class="single-blog-area">
                     <!-- Post Thumbnail -->
                     <div class="blog-post-thumbnail">
-                        <img src="~/Content/Customer/img/blog-img/4.jpg" alt="">
+                        <img src="@Url.Content(Model.BLOG_PIC)" alt="">
                         <!-- Post Date -->
                         <div class="post-date">
-                            <a href="#">Jan 23, 2018</a>
+                            <a href="#">@Model.BLOG_DATE.ToLongDateString()</a>
                         </div>
                     </div>
                     <!-- Post Content -->
                     <div class="post-content">
                         <div class="post-author">
-                            <a href="#"><img src="~/Content/Customer/img/blog-img/p1.jpg" alt=""></a>
+                            <a href="#"><img src="@Url.Content(Model.Admin.ADMIN_PIC)" alt=""></a>
                         </div>
-                        <a href="#" class="headline mb-0">Free dental care for our clients </a>
+                        <a href="#" class="headline mb-0">@Model.BLOG_TITLE </a>
                         <div class="post-meta">
-                            <a href="#" class="post-author-name">by Dr. Cristinne Smith</a> | <a href="#" class="post-catagory">Dental</a>
+                            <a href="#" class="post-author-name">by @Model.Admin.ADMIN_NAME</a> | <a href="#" class="post-catagory">@Model.Blog_Category.CATEGORY_NAME</a>
                         </div>
-                        <p>Dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec gravida tortor, non vehicula mauris. Cras aliquam lobortis nulla vel fermentum. Phasellus iaculis id nunc at egestas. Etiam nec venenatis tortor, quis fermentum diam. Pellentesque gravida ante nisi, vel posuere leo suscipit et. Proin tortor magna, pharetra vel faucibus in, interdum vitae est. Vivamus aliquet dapibus lacus, ut viverra diam dapibus vel. Ut vehicula rhoncus dolor, nec malesuada ligula condimentum eu. Proin id placerat lorem. Maecenas varius felis id dui aliquet, at iaculis mauris molestie. Proin mattis dolor ut lacus rutrum posuere. Ut ullamcorper ipsum iaculis risus mollis, in volutpat turpis efficitur. Nullam dignissim imperdiet augue a convallis.</p>
+                        <p>@Model.BLOG_DISCRIPTION</p>
                     </div>
-                    <img src="~/Content/Customer/img/blog-img/5.jpg" alt="">
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <p>Phasellus iaculis id nunc at egestas. Etiam nec venenatis tortor, quis fermentum diam. Pellentesque gravida ante nisi, vel posuere leo suscipit et. Proin tortor magna, pharetra vel faucibus in, interdum vitae est. Vivamus aliquet dapibus lacus, ut viverra diam dapibus vel. Ut vehicula rhoncus dolor, nec malesuada ligula condimentum eu. Proin id placerat lorem. Maecenas varius felis id dui aliquet, at iaculis mauris molestie. Proin mattis dolor ut lacus rutrum posuere. Ut ullamcorper ipsum iaculis risus mollis, in volutpat turpis efficitur. Nullam dignissim imperdiet augue a convallis.</p>
-                    </div>
+                   
                 </div>
 
+
+
                 <div class="comments-area">
-                    <h5>Comments</h5>
+                    <h5>Comments (@comment.Count())</h5>
                     <ol>
                         <!-- Single Comment Area -->
-                        <li class="single_comment_area">
-                            <div class="comment-wrapper d-flex">
-                                <!-- Comment Meta -->
-                                <div class="comment-author">
-                                    <img src="~/Content/Customer/blog-img/6.jpg" alt="">
-                                </div>
-                                <!-- Comment Content -->
-                                <div class="comment-content">
-                                    <div class="comment-meta">
-                                        <a href="#" class="comment-author-name">Maria Williams</a> |
-                                        <a href="#" class="comment-date">Jan 29, 2018</a> |
-                                        <a href="#" class="comment-reply">Reply</a>
+                        @foreach ( var c in comment)
+                        {
+                            <li class="single_comment_area">
+                                <div class="comment-wrapper d-flex">
+                                    <!-- Comment Meta -->
+                                    <div class="comment-author">
+                                        <img src="~/Content/Customer/img/blog-img/placeholder.png" alt="">
                                     </div>
-                                    <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat.</p>
-                                </div>
-                            </div>
-                            <ol class="children">
-                                <li class="single_comment_area">
-                                    <div class="comment-wrapper d-flex">
-                                        <!-- Comment Meta -->
-                                        <div class="comment-author">
-                                            <img src="~/Content/Customer/img/blog-img/7.jpg" alt="">
+                                    <!-- Comment Content -->
+                                    <div class="comment-content">
+                                        <div class="comment-meta">
+                                            <a href="#" class="comment-author-name">@c.COMMENT_NAME</a> |
+                                            <a href="#" class="comment-date">@c.BLOG_DATE.ToLongDateString()</a> 
                                         </div>
-                                        <!-- Comment Content -->
-                                        <div class="comment-content">
-                                            <div class="comment-meta">
-                                                <a href="#" class="comment-author-name">Maria Williams</a> |
-                                                <a href="#" class="comment-date">Jan 29, 2018</a> |
-                                                <a href="#" class="comment-reply">Reply</a>
-                                            </div>
-                                            <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat.</p>
-                                        </div>
+                                        <p>@c.COMMENT_MESSAGE</p>
                                     </div>
-                                </li>
-                            </ol>
-                        </li>
-                        <li class="single_comment_area">
-                            <div class="comment-wrapper d-flex">
-                                <!-- Comment Meta -->
-                                <div class="comment-author">
-                                    <img src="~/Content/Customer/img/blog-img/6.jpg" alt="">
                                 </div>
-                                <!-- Comment Content -->
-                                <div class="comment-content">
-                                    <div class="comment-meta">
-                                        <a href="#" class="comment-author-name">Maria Williams</a> |
-                                        <a href="#" class="comment-date">Jan 29, 2018</a> |
-                                        <a href="#" class="comment-reply">Reply</a>
-                                    </div>
-                                    <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat.</p>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        }
+
                     </ol>
                 </div>
 
@@ -114,18 +85,23 @@
                         <h5>Leave a reply</h5>
 
                         <!-- Comment Form -->
-                        <form action="#" method="post">
+                        @using (Html.BeginForm("Create", "Blog_Comment", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
                             <div class="form-group">
-                                <input type="text" class="form-control" id="contact-name" placeholder="Name">
+                                <input type="text" class="form-control" id="contact-name" name="COMMENT_NAME" placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="contact-email" placeholder="Email">
+                                <input type="email" class="form-control" id="contact-email" name="COMMENT_EMAIL" placeholder="Email">
+                                <input type="hidden" name="BLOG_FID" value="@Model.BLOG_ID" />
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                <textarea class="form-control" id="message" name="COMMENT_MESSAGE" cols="30" rows="10" placeholder="Message"></textarea>
                             </div>
+                           
                             <button type="submit" class="btn medilife-btn">Post Comment <span>+</span></button>
-                        </form>
+                        }
+
                     </div>
                 </div>
             </div>
@@ -133,23 +109,17 @@
             <div class="col-12 col-lg-4">
                 <div class="medilife-blog-sidebar-area">
 
-                    <!-- Search Widget -->
-                    <div class="search-widget-area mb-50">
-                        <form action="#" method="get">
-                            <input type="search" placeholder="Type Any Keywords">
-                            <input type="submit" value="Search">
-                        </form>
-                    </div>
+
 
                     <!-- Catagories Widget -->
                     <div class="medilife-catagories-card mb-50">
                         <h5>Categories</h5>
                         <ul class="catagories-menu">
-                            <li><a href="#">Radiology</a></li>
-                            <li><a href="#">Cardiology</a></li>
-                            <li><a href="#">Gastroenterology</a></li>
-                            <li><a href="#">Neurology</a></li>
-                            <li><a href="#">General surgery</a></li>
+                            @foreach (var c in Cat)
+                            {
+                                <li><a href="@Url.Action("Blog", "Home", new { id = c.CATEGORY_ID })">@c.CATEGORY_NAME</a></li>
+                                }
+
                         </ul>
                     </div>
 
@@ -158,35 +128,21 @@
                         <h5>Latest News</h5>
                         <div class="widget-blog-post">
                             <!-- Single Blog Post -->
-                            <div class="widget-single-blog-post d-flex align-items-center">
-                                <div class="widget-post-thumbnail pr-3">
-                                    <img src="~/Content/Customer/img/blog-img/ln1.jpg" alt="">
+                            @foreach (var b in blog)
+                            {
+                                <div class="widget-single-blog-post d-flex align-items-center">
+                                    <div class="widget-post-thumbnail pr-3">
+                                        <a href="@Url.Action("SingleBlog","Home", new { id = b.BLOG_ID })"><img src="@Url.Content(b.BLOG_PIC)" alt=""></a>
+                                    </div>
+                                    <a href="@Url.Action("SingleBlog","Home", new { id = b.BLOG_ID })">
+                                        <div class="widget-post-content">
+                                            <a href="@Url.Action("SingleBlog","Home", new { id = b.BLOG_ID })"><b>@b.BLOG_TITLE</b></a>
+                                            <a href="@Url.Action("SingleBlog","Home", new { id = b.BLOG_ID })">@b.BLOG_DATE.ToLongDateString()</a>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="widget-post-content">
-                                    <a href="#">A big discovery for medicine</a>
-                                    <p>Dec 02, 2017</p>
-                                </div>
-                            </div>
-                            <!-- Single Blog Post -->
-                            <div class="widget-single-blog-post d-flex align-items-center">
-                                <div class="widget-post-thumbnail pr-3">
-                                    <img src="~/Content/Customer/blog-img/ln2.jpg" alt="">
-                                </div>
-                                <div class="widget-post-content">
-                                    <a href="#">Dentistry for everybody</a>
-                                    <p>Dec 02, 2017</p>
-                                </div>
-                            </div>
-                            <!-- Single Blog Post -->
-                            <div class="widget-single-blog-post d-flex align-items-center">
-                                <div class="widget-post-thumbnail pr-3">
-                                    <img src="~/Content/Customer/img/blog-img/ln3.jpg" alt="">
-                                </div>
-                                <div class="widget-post-content">
-                                    <a href="#">When it’s time to take pills</a>
-                                    <p>Dec 02, 2017</p>
-                                </div>
-                            </div>
+                            }
+
                         </div>
                     </div>
 

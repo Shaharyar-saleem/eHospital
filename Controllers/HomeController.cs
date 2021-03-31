@@ -12,7 +12,8 @@ namespace eHospital.Controllers
         Model1 db = new Model1();
         public ActionResult IndexCustomer()
         {
-            return View();
+            var blog = db.Blogs.Take(3).ToList();
+            return View(blog);
         }
 
         public ActionResult IndexAdmin()
@@ -40,14 +41,25 @@ namespace eHospital.Controllers
             return View();
         }
 
-        public ActionResult Blog()
+        public ActionResult Blog(int? id)
         {
+            if(id != null)
+            {
+                var blog = db.Blogs.Where(x => x.BLOG_ID == id).ToList();
+                return View(blog);
+            }
+            else
+            {
+                var blog = db.Blogs.Where(X => X.BLOG_PIC != null).ToList();
+                return View(blog);
+            }
             return View();
         }
 
-        public ActionResult SingleBlog()
+        public ActionResult SingleBlog(int id)
         {
-            return View();
+            Blog blog = db.Blogs.Where(x=> x.BLOG_ID == id).FirstOrDefault();
+            return View(blog);
         }
 
         public ActionResult Contact()

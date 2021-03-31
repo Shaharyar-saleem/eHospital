@@ -52,9 +52,10 @@ namespace eHospital.Controllers
         {
             if (ModelState.IsValid)
             {
+                blog_Comment.BLOG_DATE = DateTime.Now;
                 db.Blog_Comment.Add(blog_Comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("SingleBlog", "Home", new { id = blog_Comment.BLOG_FID });
             }
 
             ViewBag.BLOG_FID = new SelectList(db.Blogs, "BLOG_ID", "BLOG_TITLE", blog_Comment.BLOG_FID);

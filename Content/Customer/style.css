@@ -1291,13 +1291,14 @@ textarea {
     z-index: 1;
     padding: 50px 20px; }
     .single-blog-area .post-content .post-author {
-      width: 58px;
-      height: 58px;
-      position: absolute;
-      z-index: 5;
-      border-radius: 50%;
-      top: -29px;
-      left: 20px; }
+        width: 49px;
+        height: 25px;
+        position: absolute;
+        z-index: 5;
+        border-radius: 50%;
+        top: -40px;
+        left: 20px;
+    }
       .single-blog-area .post-content .post-author a {
         border-radius: 50%; }
         .single-blog-area .post-content .post-author a img {
@@ -1358,7 +1359,7 @@ textarea {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 58px;
     flex: 0 0 58px;
-    min-width: 58px; }
+    min-width: 80px; }
   .latest-news-widget-area .widget-single-blog-post .widget-post-content a {
     display: block;
     color: #57595c;
@@ -1936,4 +1937,12 @@ a.discrete {
 }
 .registration-form label{
     font-weight: bold !important;
+}
+.blog_paragraph {
+    color: black;
+    font-weight: inherit;
+}
+.blog_paragraph:hover {
+    color: black;
+    font-weight: inherit;
 }

@@ -1,5 +1,12 @@
-﻿@{
+﻿@model IEnumerable<eHospital.Models.Blog>
+@using eHospital.Models;
+
+@{
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    var db = new Model1();
+    List<Blog_Category> cat = db.Blog_Category.ToList();
+    List<Blog> blog = db.Blogs.ToList();
+
 }
 
 <!-- ***** Breadcumb Area Start ***** -->
@@ -9,7 +16,7 @@
             <div class="col-12">
                 <div class="breadcumb-content">
                     <h3 class="breadcumb-title">News</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer</p>
+                    <p>Latest News Blogs</p>
                 </div>
             </div>
         </div>
@@ -23,160 +30,52 @@
             <div class="col-12 col-lg-8">
                 <div class="row">
                     <!-- Single Blog Area -->
+                    @foreach (var b in Model)
+                    {
                     <div class="col-12 col-md-6">
+                        
                         <div class="single-blog-area bg-gray mb-50">
                             <!-- Post Thumbnail -->
-                            <div class="blog-post-thumbnail">
-                                <img src="~/Content/Customer/img/blog-img/1.jpg" alt="">
-                                <!-- Post Date -->
-                                <div class="post-date">
-                                    <a href="#">Jan 23, 2018</a>
+                            <a href="@Url.Action("SingleBlog","Home", new { id = b.BLOG_ID })">
+                                <div class="blog-post-thumbnail">
+                                    <img src="@Url.Content(b.BLOG_PIC)" alt="">
+                                    <!-- Post Date -->
+                                    <div class="post-date">
+                                        <a>@b.BLOG_DATE.ToLongDateString()</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <div class="post-author">
-                                    <a href="#"><img src="~/Content/Customer/img/blog-img/p1.jpg" alt=""></a>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <div class="post-author">
+                                        <a><img src="@Url.Content(b.Admin.ADMIN_PIC)" alt=""></a>
+                                    </div>
+                                    <a href="@Url.Action("SingleBlog","Home", new { id = b.BLOG_ID })" class="headline">@b.BLOG_TITLE</a>
+                                    <a href="@Url.Action("SingleBlog","Home", new { id = b.BLOG_ID })" class="blog_paragraph">@b.BLOG_DISCRIPTION</a><br />
+                                    <a href="#" class="comments">@b.Blog_Comment.Count() Comments</a>
                                 </div>
-                                <a href="#" class="headline">New drog release soon</a>
-                                <p>Dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                                <a href="#" class="comments">3 Comments</a>
-                            </div>
+                            </a>
                         </div>
-                    </div>
-                    <!-- Single Blog Area -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-area bg-gray mb-50">
-                            <!-- Post Thumbnail -->
-                            <div class="blog-post-thumbnail">
-                                <img src="~/Content/Customer/img/blog-img/2.jpg" alt="">
-                                <!-- Post Date -->
-                                <div class="post-date">
-                                    <a href="#">Jan 23, 2018</a>
-                                </div>
-                            </div>
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <div class="post-author">
-                                    <a href="#"><img src="~/Content/Customer/img/blog-img/p2.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="headline">Free dental care</a>
-                                <p>Dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                                <a href="#" class="comments">3 Comments</a>
-                            </div>
+                           
                         </div>
-                    </div>
-                    <!-- Single Blog Area -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-area bg-gray mb-50">
-                            <!-- Post Thumbnail -->
-                            <div class="blog-post-thumbnail">
-                                <img src="~/Content/Customer/img/blog-img/3.jpg" alt="">
-                                <!-- Post Date -->
-                                <div class="post-date">
-                                    <a href="#">Jan 23, 2018</a>
-                                </div>
-                            </div>
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <div class="post-author">
-                                    <a href="#"><img src="~/Content/Customer/img/blog-img/p3.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="headline">Good news for the pacients</a>
-                                <p>Dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                                <a href="#" class="comments">3 Comments</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Blog Area -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-area bg-gray mb-50">
-                            <!-- Post Thumbnail -->
-                            <div class="blog-post-thumbnail">
-                                <img src="~/Content/Customer/img/blog-img/1.jpg" alt="">
-                                <!-- Post Date -->
-                                <div class="post-date">
-                                    <a href="#">Jan 23, 2018</a>
-                                </div>
-                            </div>
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <div class="post-author">
-                                    <a href="#"><img src="~/Content/Customer/img/blog-img/p1.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="headline">New drog release soon</a>
-                                <p>Dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                                <a href="#" class="comments">3 Comments</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Blog Area -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-area bg-gray mb-50">
-                            <!-- Post Thumbnail -->
-                            <div class="blog-post-thumbnail">
-                                <img src="~/Content/Customer/img/blog-img/2.jpg" alt="">
-                                <!-- Post Date -->
-                                <div class="post-date">
-                                    <a href="#">Jan 23, 2018</a>
-                                </div>
-                            </div>
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <div class="post-author">
-                                    <a href="#"><img src="~/Content/Customer/img/blog-img/p2.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="headline">Free dental care</a>
-                                <p>Dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                                <a href="#" class="comments">3 Comments</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Blog Area -->
-                    <div class="col-12 col-md-6">
-                        <div class="single-blog-area bg-gray mb-50">
-                            <!-- Post Thumbnail -->
-                            <div class="blog-post-thumbnail">
-                                <img src="~/Content/Customer/img/blog-img/3.jpg" alt="">
-                                <!-- Post Date -->
-                                <div class="post-date">
-                                    <a href="#">Jan 23, 2018</a>
-                                </div>
-                            </div>
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <div class="post-author">
-                                    <a href="#"><img src="~/Content/Customer/img/blog-img/p3.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="headline">Good news for the pacients</a>
-                                <p>Dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                                <a href="#" class="comments">3 Comments</a>
-                            </div>
-                        </div>
-                    </div>
+                    }
+
+                 
+
                 </div>
             </div>
 
             <div class="col-12 col-lg-4">
                 <div class="medilife-blog-sidebar-area">
 
-                    <!-- Search Widget -->
-                    <div class="search-widget-area mb-50">
-                        <form action="#" method="get">
-                            <input type="search" placeholder="Type Any Keywords">
-                            <input type="submit" value="Search">
-                        </form>
-                    </div>
 
                     <!-- Catagories Widget -->
                     <div class="medilife-catagories-card mb-50">
                         <h5>Categories</h5>
                         <ul class="catagories-menu">
-                            <li><a href="#">Radiology</a></li>
-                            <li><a href="#">Cardiology</a></li>
-                            <li><a href="#">Gastroenterology</a></li>
-                            <li><a href="#">Neurology</a></li>
-                            <li><a href="#">General surgery</a></li>
+                            @foreach (var c in cat)
+                            {
+                                <li><a href="@Url.Action("Blog","Home", new { id = c.CATEGORY_ID })">@c.CATEGORY_NAME</a></li>
+                            }
                         </ul>
                     </div>
 
@@ -185,35 +84,22 @@
                         <h5>Latest News</h5>
                         <div class="widget-blog-post">
                             <!-- Single Blog Post -->
-                            <div class="widget-single-blog-post d-flex align-items-center">
-                                <div class="widget-post-thumbnail pr-3">
-                                    <img src="~/Content/Customer/img/blog-img/ln1.jpg" alt="">
+                            @foreach (var bl in blog)
+                            {
+                                <div class="widget-single-blog-post d-flex align-items-center">
+                                    <div class="widget-post-thumbnail pr-3">
+                                        <a href="@Url.Action("SingleBlog","Home", new { id = bl.BLOG_ID })"><img src="@Url.Content(bl.BLOG_PIC)" alt=""></a>
+</div>
+                                    <a href="@Url.Action("SingleBlog","Home", new { id = bl.BLOG_ID })">
+                                        <div class="widget-post-content">
+                                            <a href="@Url.Action("SingleBlog","Home", new { id = bl.BLOG_ID })"><b>@bl.BLOG_TITLE</b></a>
+                                            <a href="@Url.Action("SingleBlog","Home", new { id = bl.BLOG_ID })">@bl.BLOG_DATE.ToLongDateString()</a>
+</div>
+                                    </a>
                                 </div>
-                                <div class="widget-post-content">
-                                    <a href="#">A big discovery for medicine</a>
-                                    <p>Dec 02, 2017</p>
-                                </div>
-                            </div>
-                            <!-- Single Blog Post -->
-                            <div class="widget-single-blog-post d-flex align-items-center">
-                                <div class="widget-post-thumbnail pr-3">
-                                    <img src="~/Content/Customer/img/blog-img/ln2.jpg" alt="">
-                                </div>
-                                <div class="widget-post-content">
-                                    <a href="#">Dentistry for everybody</a>
-                                    <p>Dec 02, 2017</p>
-                                </div>
-                            </div>
-                            <!-- Single Blog Post -->
-                            <div class="widget-single-blog-post d-flex align-items-center">
-                                <div class="widget-post-thumbnail pr-3">
-                                    <img src="~/Content/Customer/img/blog-img/ln3.jpg" alt="">
-                                </div>
-                                <div class="widget-post-content">
-                                    <a href="#">When it’s time to take pills</a>
-                                    <p>Dec 02, 2017</p>
-                                </div>
-                            </div>
+                            }
+
+
                         </div>
                     </div>
 
