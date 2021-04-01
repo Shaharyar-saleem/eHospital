@@ -570,7 +570,6 @@
     <Content Include="Views\Blog_Category\Details.cshtml" />
     <Content Include="Views\Blog_Category\Edit.cshtml" />
     <Content Include="Views\Blog_Category\Index.cshtml" />
-    <Content Include="Views\Blog_Comment\Create.cshtml" />
     <Content Include="Views\Blog_Comment\Delete.cshtml" />
     <Content Include="Views\Blog_Comment\Details.cshtml" />
     <Content Include="Views\Blog_Comment\Edit.cshtml" />
