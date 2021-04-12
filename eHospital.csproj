@@ -609,6 +609,7 @@
     <Content Include="Views\Home\IndexDoctor.cshtml" />
     <Content Include="Views\Home\IndexPatient.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Home\Booking.cshtml" />
     <None Include="Views\Home\Services.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />

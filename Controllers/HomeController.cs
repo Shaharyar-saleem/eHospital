@@ -139,5 +139,10 @@ namespace eHospital.Controllers
             return RedirectToAction("LogIn","Home");
         }
 
+        public ActionResult Booking(int id)
+        {
+            Doctor dr = db.Doctors.Where(x => x.DR_ID == id).FirstOrDefault();
+            return View(dr);
+        }
     }
 }
