@@ -73,13 +73,7 @@ a {
   outline: none;
   font-size: 14px;
   font-weight: 700; }
-  a:hover, a:focus {
-    -webkit-transition-duration: 500ms;
-    transition-duration: 500ms;
-    text-decoration: none;
-    outline: none;
-    font-size: 14px;
-    font-weight: 700; }
+ 
 
 #preloader {
   overflow: hidden;
@@ -700,7 +694,9 @@ textarea {
   padding: 20px; }
 
 .nice-select {
-  line-height: 34px; }
+  line-height: 34px;
+  width: 100%;
+}
   .nice-select .list {
     left: 0 !important;
     right: 0 !important;
@@ -1291,13 +1287,14 @@ textarea {
     z-index: 1;
     padding: 50px 20px; }
     .single-blog-area .post-content .post-author {
-      width: 58px;
-      height: 58px;
-      position: absolute;
-      z-index: 5;
-      border-radius: 50%;
-      top: -29px;
-      left: 20px; }
+        width: 49px;
+        height: 25px;
+        position: absolute;
+        z-index: 5;
+        border-radius: 50%;
+        top: -40px;
+        left: 20px;
+    }
       .single-blog-area .post-content .post-author a {
         border-radius: 50%; }
         .single-blog-area .post-content .post-author a img {
@@ -1358,7 +1355,7 @@ textarea {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 58px;
     flex: 0 0 58px;
-    min-width: 58px; }
+    min-width: 80px; }
   .latest-news-widget-area .widget-single-blog-post .widget-post-content a {
     display: block;
     color: #57595c;
@@ -1936,4 +1933,22 @@ a.discrete {
 }
 .registration-form label{
     font-weight: bold !important;
+}
+.blog_paragraph {
+    color: black;
+    font-weight: inherit;
+}
+.blog_paragraph:hover {
+    color: black;
+    font-weight: inherit;
+}
+.medilife-appointment-form input{
+    background: white !important;
+}
+.medilife-appointment-form .nice-select {
+    background: white !important;
+}
+.tick-icon {
+    color: green;
+    font-size: 112px;
 }

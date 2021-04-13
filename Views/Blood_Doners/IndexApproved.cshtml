@@ -1,0 +1,80 @@
+﻿@model IEnumerable<eHospital.Models.Blood_Doners>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            Donor Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Contact
+        </th>
+        <th>
+            DOB
+        </th>
+        <th>
+            Group
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Approved By
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_NAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_EMAIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_CONTACT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_DOB)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BLOOD_GROUP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_GENDER)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONER_CITY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Admin.ADMIN_NAME)
+    </td>
+    <td>
+        <span class="bg-success p-1 text-white">
+            @Html.DisplayFor(modelItem => item.DONER_STATUS)
+        </span>
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = item.DONER_ID })
+    </td>
+</tr>
+}
+
+</table>

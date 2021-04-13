@@ -532,6 +532,8 @@
     <Content Include="Content\Doctor\assets\icon\themify-icons\fonts\themify.woff" />
     <Content Include="Content\Doctor\assets\images\auth\Thumbs.db" />
     <Content Include="Content\Doctor\assets\images\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Shaharyar.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -568,7 +570,6 @@
     <Content Include="Views\Blog_Category\Details.cshtml" />
     <Content Include="Views\Blog_Category\Edit.cshtml" />
     <Content Include="Views\Blog_Category\Index.cshtml" />
-    <Content Include="Views\Blog_Comment\Create.cshtml" />
     <Content Include="Views\Blog_Comment\Delete.cshtml" />
     <Content Include="Views\Blog_Comment\Details.cshtml" />
     <Content Include="Views\Blog_Comment\Edit.cshtml" />
@@ -603,10 +604,13 @@
     <Content Include="Views\Doctors\Details.cshtml" />
     <Content Include="Views\Doctors\Edit.cshtml" />
     <Content Include="Views\Doctors\Index.cshtml" />
+    <Content Include="Views\Blood_Doners\IndexApproved.cshtml" />
     <None Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\IndexDoctor.cshtml" />
     <Content Include="Views\Home\IndexPatient.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Home\Booking.cshtml" />
+    <Content Include="Views\Home\Confirmation.cshtml" />
     <None Include="Views\Home\Services.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
@@ -637,10 +641,12 @@
     <Content Include="Views\Patient_Treatment\Details.cshtml" />
     <Content Include="Views\Patient_Treatment\Edit.cshtml" />
     <Content Include="Views\Patient_Treatment\Index.cshtml" />
+    <Content Include="Views\Blood_Doners\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account_Images\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Blog_Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

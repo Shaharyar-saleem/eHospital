@@ -17,7 +17,13 @@ namespace eHospital.Controllers
         // GET: Blood_Doners
         public ActionResult Index()
         {
-            var blood_Doners = db.Blood_Doners.Include(b => b.Admin);
+            var blood_Doners = db.Blood_Doners.Include(b => b.Admin).Where(x=> x.DONER_STATUS == "Pending");
+            return View(blood_Doners.ToList());
+        }
+
+        public ActionResult IndexApproved()
+        {
+            var blood_Doners = db.Blood_Doners.Include(b => b.Admin).Where(x => x.DONER_STATUS == "Approved");
             return View(blood_Doners.ToList());
         }
 
@@ -54,11 +60,13 @@ namespace eHospital.Controllers
             {
                 db.Blood_Doners.Add(blood_Doners);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Thanks");
             }
 
             ViewBag.ADMIN_FID = new SelectList(db.Admins, "ADMIN_ID", "ADMIN_NAME", blood_Doners.ADMIN_FID);
             return View(blood_Doners);
+            
         }
 
         // GET: Blood_Doners/Edit/5
@@ -127,6 +135,22 @@ namespace eHospital.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Thanks()
+        {
+            return View();
+        }
+
+        
+        public ActionResult Approve(int? id)
+        {
+            Blood_Doners donor = db.Blood_Doners.Where(x => x.DONER_ID == id).FirstOrDefault();
+            donor.DONER_STATUS = "Approved";
+            Admin adm = (Admin)Session["Admin"];
+            donor.ADMIN_FID = adm.ADMIN_ID;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

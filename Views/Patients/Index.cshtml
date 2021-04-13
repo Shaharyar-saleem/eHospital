@@ -1,15 +1,24 @@
 ﻿@model IEnumerable<eHospital.Models.Patient>
+@using eHospital.Models;
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+    Admin adm = (Admin)Session["Admin"];
+    Patient pat = (Patient)Session["Patient"];
+    if(pat != null)
+    {
+        Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
 }
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -62,9 +71,7 @@
             <img width="60px" height="60px" src="@Url.Content(item.PATIENT_PIC)" alt="Alternate Text" />
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PATIENT_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PATIENT_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PATIENT_ID })
+            @Html.ActionLink("Details", "Details", new { id=item.PATIENT_ID })
         </td>
     </tr>
 }

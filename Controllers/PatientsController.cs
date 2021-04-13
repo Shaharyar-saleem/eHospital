@@ -63,7 +63,7 @@ namespace eHospital.Controllers
                 else
                 {
                     ViewBag.Message = "Both Passwords are not same";
-                    return RedirectToAction("Create", "Patients");
+                    return View();
                 }
             }
             return RedirectToAction("IndexCustomer", "Home");

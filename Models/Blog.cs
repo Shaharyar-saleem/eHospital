@@ -5,6 +5,7 @@ namespace eHospital.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Blog")]
     public partial class Blog
@@ -34,6 +35,8 @@ namespace eHospital.Models
         [StringLength(100)]
         public string BLOG_PIC { get; set; }
 
+        [NotMapped]
+        public HttpPostedFileBase BLOG_IMAGE { get; set; }
         public DateTime BLOG_DATE { get; set; }
 
         public virtual Admin Admin { get; set; }

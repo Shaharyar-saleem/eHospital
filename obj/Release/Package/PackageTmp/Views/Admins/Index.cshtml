@@ -1,0 +1,65 @@
+﻿@model IEnumerable<eHospital.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Role
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Contact Number
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin_Role.ROLE_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMIN_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMIN_EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMIN_PASSWORD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMIN_CONTACT)
+        </td>
+        <td>
+            <img width="65px" height="65px" src="@Url.Content(item.ADMIN_PIC)" alt="Alternate Text" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ADMIN_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ADMIN_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ADMIN_ID })
+        </td>
+    </tr>
+}
+
+</table>

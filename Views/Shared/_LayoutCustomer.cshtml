@@ -1,12 +1,16 @@
-﻿
+﻿@using eHospital.Models;
+@{ 
+    Patient pat = (Patient)Session["Patient"];
+}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" ~ /Content ="">
-    <meta http-equiv="X-UA-Compatible" ~ /Content ="IE=edge">
-    <meta name="viewport" ~ /Content ="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- The above 4 meta tags *must* come first in the head; any other head ~/Content must come *after* these tags -->
     <!-- Title  -->
     <title>Medilife - Health &amp; Medical Template | Home</title>
@@ -32,8 +36,11 @@
                 <div class="row h-100">
                     <div class="col-12 h-100">
                         <div class="h-100 d-md-flex justify-~/Content-between align-items-center">
-                            <p>Welcome to <span>Medifile</span> template</p>
-                            <p>Opening Hours : Monday to Saturday - 8am to 10pm Contact : <span>+12-823-611-8721</span></p>
+                            @if (pat != null)
+                            {
+                                <p>Welcome <b>@pat.PATIENT_NAME</b></p>
+                            }
+                            <p class="pl-2">Opening Hours : Monday to Saturday - 8am to 10pm Contact : <span>+12-823-611-8721</span></p>
                         </div>
                     </div>
                 </div>
@@ -58,6 +65,7 @@
                                         <li class="nav-item active">
                                             <a class="nav-link" href='@Url.Action("IndexCustomer","Home")'>Home <span class="sr-only">(current)</span></a>
                                         </li>
+                                        <!--
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -65,6 +73,8 @@
 
                                             </div>
                                         </li>
+                                            -->
+
                                         <li class="nav-item">
                                             <a class="nav-link" href='@Url.Action("About","Home")'>About Us</a>
                                         </li>
@@ -76,6 +86,9 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href='@Url.Action("Contact","Home")'>Contact</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href='@Url.Action("Create","Blood_Doners")'>Blood Doner</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href='@Url.Action("LogIn","Home")'> <i class="fa fa-user"></i> &nbsp;Log In</a>

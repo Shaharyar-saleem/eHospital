@@ -12,7 +12,8 @@ namespace eHospital.Controllers
         Model1 db = new Model1();
         public ActionResult IndexCustomer()
         {
-            return View();
+            var blog = db.Blogs.Take(3).ToList();
+            return View(blog);
         }
 
         public ActionResult IndexAdmin()
@@ -40,14 +41,25 @@ namespace eHospital.Controllers
             return View();
         }
 
-        public ActionResult Blog()
+        public ActionResult Blog(int? id)
         {
+            if(id != null)
+            {
+                var blog = db.Blogs.Where(x => x.BLOG_ID == id).ToList();
+                return View(blog);
+            }
+            else
+            {
+                var blog = db.Blogs.Where(X => X.BLOG_PIC != null).ToList();
+                return View(blog);
+            }
             return View();
         }
 
-        public ActionResult SingleBlog()
+        public ActionResult SingleBlog(int id)
         {
-            return View();
+            Blog blog = db.Blogs.Where(x=> x.BLOG_ID == id).FirstOrDefault();
+            return View(blog);
         }
 
         public ActionResult Contact()
@@ -66,9 +78,10 @@ namespace eHospital.Controllers
             // if admin is trying to log in
             if(a.lOGIN_AS == "Admin")
             {
-                int result = db.Admins.Where(x => x.ADMIN_EMAIL == a.ADMIN_EMAIL && x.ADMIN_PASSWORD == a.ADMIN_PASSWORD).Count();
-                if (result == 1)
+                Admin adm = db.Admins.Where(x => x.ADMIN_EMAIL == a.ADMIN_EMAIL && x.ADMIN_PASSWORD == a.ADMIN_PASSWORD).FirstOrDefault();
+                if (adm != null)
                 {
+                    Session["Admin"] = adm;
                     return RedirectToAction("IndexAdmin", "Home");
                 }
                 else
@@ -82,9 +95,10 @@ namespace eHospital.Controllers
 
             if (a.lOGIN_AS == "Doctor")
             {
-                int result = db.Doctors.Where(x => x.DR_EMAIL == a.ADMIN_EMAIL && x.DR_PASSWORD == a.ADMIN_PASSWORD).Count();
-                if (result == 1)
+                Doctor doc = db.Doctors.Where(x => x.DR_EMAIL == a.ADMIN_EMAIL && x.DR_PASSWORD == a.ADMIN_PASSWORD).FirstOrDefault();
+                if (doc != null)
                 {
+                    Session["Doctor"] = doc;
                     return RedirectToAction("IndexDoctor", "Home");
                 }
                 else
@@ -98,9 +112,10 @@ namespace eHospital.Controllers
 
             if (a.lOGIN_AS == "Patient")
             {
-                int result = db.Patients.Where(x => x.PATIENT_EMAIL == a.ADMIN_EMAIL && x.PATIENT_PASSWORD == a.ADMIN_PASSWORD).Count();
-                if (result == 1)
+                Patient pat = db.Patients.Where(x => x.PATIENT_EMAIL == a.ADMIN_EMAIL && x.PATIENT_PASSWORD == a.ADMIN_PASSWORD).FirstOrDefault();
+                if (pat != null)
                 {
+                    Session["Patient"] = pat;
                     return RedirectToAction("IndexPatient", "Home");
                 }
                 else
@@ -114,6 +129,25 @@ namespace eHospital.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult LogOut(Admin adm)
+        {
+            Session["Admin"] = null;
+            Session["Patient"] = null;
+            Session["Doctor"] = null;
+            return RedirectToAction("LogIn","Home");
+        }
+
+        public ActionResult Booking(int id)
+        {
+            Doctor dr = db.Doctors.Where(x => x.DR_ID == id).FirstOrDefault();
+            return View(dr);
+        }
+
+        public ActionResult Confirmation()
+        {
+            return View();
         }
     }
 }
