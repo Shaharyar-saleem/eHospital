@@ -1948,3 +1948,7 @@ a.discrete {
 .medilife-appointment-form .nice-select {
     background: white !important;
 }
+.tick-icon {
+    color: green;
+    font-size: 112px;
+}

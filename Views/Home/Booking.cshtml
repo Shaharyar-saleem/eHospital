@@ -24,7 +24,7 @@
 <div class="container-fluid">
     <div class="row mt-5">
         <div class="col-md-3">
-            <img src="@Url.Content(Model.DR_PIC)" alt="Alternate Text" style="height: 300px"/>
+            <img src="@Url.Content(Model.DR_PIC)" alt="Alternate Text" style="height: 300px" />
             <table class="mt-4 table table-striped border">
                 <tr>
                     <th>Doctor Name:</th>
@@ -50,48 +50,52 @@
             <table class="table table-striped table-hover table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Day</th>
+                        <th>Day (yyyy-mm-dd)</th>
                         <th>Start Time</th>
                         <th>End Time</th>
                         <th>Maximum No</th>
                         <th>Available No</th>
-                        <th>Date</th>
                         <th>Time Slot</th>
                         <th>Book</th>
                     </tr>
                 </thead>
-                    @foreach (var sch in schedule)
+                @foreach (var sch in schedule)
+                {
+                    using (Html.BeginForm("Create", "Appointments", FormMethod.Post))
                     {
-            <tr>
-                <td>@sch.AVAILABLE_DAYS</td>
-                <td>@sch.START_TIME</td>
-                <td>@sch.END_TIME</td>
-                <td>@sch.MAX_APPOINTMENTS</td>
-                <td>@sch.MAX_APPOINTMENTS</td>
-                <td><input type="date" name="name" value="" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="2021/04/25" autocomplete="off" /></td>
-                <td>
+                        @Html.AntiForgeryToken()
+                        <tr>
+                            <td>@sch.AVAILABLE_DAYS</td>
+                            <td>@sch.START_TIME</td>
+                            <td>@sch.END_TIME</td>
+                            <td>@sch.MAX_APPOINTMENTS</td>
+                            <td>@sch.MAX_APPOINTMENTS</td>
+                            <td>
+                                <input type="hidden" name="APPOINTMENT_DATE" value="@sch.AVAILABLE_DAYS" />
+                                <input type="hidden" name="SCHEDULE_FID" value="@sch.SCHEDULE_ID" />
+                                <select style="width: 100%" name="TIME_SLOT">
+                                    <option value="1:00 - 2:00 PM">1:00 - 2:00 PM</option>
+                                    <option value="2:00 - 3:00 PM">2:00 - 3:00 PM</option>
+                                    <option value="4:00 - 5:00 PM">4:00 - 5:00 PM</option>
 
-                    <select style="width: 100%">
-                        <option value="1:00 - 2:00 PM">1:00 - 2:00 PM</option>
-                        <option value="2:00 - 3:00 PM">2:00 - 3:00 PM</option>
-                        <option value="4:00 - 5:00 PM">4:00 - 5:00 PM</option>
+                                </select>
+                            </td>
+                            <td>
+                                @if (pat != null)
+                                {
+                                    <Input type="submit" value="Reserve" class="btn btn-success btn-md" />
 
-                    </select>
-                </td>
-                <td>
-                    @if (pat != null)
-                    {
-                        <a href="@Url.Action("Reserve","Home", new { id = sch.SCHEDULE_ID })" class="btn btn-success btn-md">Reserve</a>
-                    }
-                    else
-                    {
-                        <p class="alert-danger text-center">login for Book An Appointment</p>
-                    }
+                                }
+                                else
+                                {
+                                    <p class="alert-danger text-center">login for Book An Appointment</p>
+                                }
 
-                </td>
-            </tr>
+                            </td>
+                        </tr>
                     }
-</table>
+                }
+            </table>
         </div>
     </div>
 </div>

@@ -49,13 +49,16 @@ namespace eHospital.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "APPOINTMENT_ID,SCHEDULE_FID,PATIENT_FID,APPOINTMENT_DATE,TIME_SLOT,STATUS")] Appointment appointment)
+        public ActionResult Create(Appointment appointment)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                Patient pat = (Patient)Session["Patient"];
+                appointment.PATIENT_FID = pat.PATIENT_ID;
+                appointment.STATUS = "PENDING";
                 db.Appointments.Add(appointment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Confirmation", "Home");
             }
 
             ViewBag.SCHEDULE_FID = new SelectList(db.Doctor_Schedule, "SCHEDULE_ID", "AVAILABLE_DAYS", appointment.SCHEDULE_FID);

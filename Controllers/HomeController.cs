@@ -144,5 +144,10 @@ namespace eHospital.Controllers
             Doctor dr = db.Doctors.Where(x => x.DR_ID == id).FirstOrDefault();
             return View(dr);
         }
+
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
     }
 }
