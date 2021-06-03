@@ -28,19 +28,19 @@
                     <th>Patient Name:</th>
                     <td>@pat.PATIENT_NAME</td>
                     <th>Doctor Name:</th>
-                    <td>@pat.Appointments.Where(x=> x.PATIENT_FID == pat.PATIENT_ID).FirstOrDefault().Doctor_Schedule.Doctor.DR_NAME</td>
+                    <td>@pat.Appointments.Where(x=> x.PATIENT_FID == pat.PATIENT_ID).LastOrDefault().Doctor_Schedule.Doctor.DR_NAME</td>
                 </tr>
                 <tr>
                     <th>Appointment Date:</th>
-                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).FirstOrDefault().APPOINTMENT_DATE.ToLongDateString()</td>
+                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).LastOrDefault().APPOINTMENT_DATE.ToLongDateString()</td>
                     <th>Time Slot:</th>
-                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).FirstOrDefault().TIME_SLOT</td>
+                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).LastOrDefault().TIME_SLOT</td>
                 </tr>
                 <tr>
                     <th>Specialization:</th>
-                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).FirstOrDefault().Doctor_Schedule.Doctor.Department.DEPARTMENT_NAME</td>
+                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).LastOrDefault().Doctor_Schedule.Doctor.Department.DEPARTMENT_NAME</td>
                     <th>Appointment Fee:</th>
-                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).FirstOrDefault().Doctor_Schedule.Doctor.DR_FEE</td>
+                    <td>@pat.Appointments.Where(x => x.PATIENT_FID == pat.PATIENT_ID).LastOrDefault().Doctor_Schedule.Doctor.DR_FEE</td>
                 </tr>
             </table>
         </div>

@@ -1,12 +1,34 @@
 ﻿@using eHospital.Models;
 @model eHospital.Models.Doctor
+
 @{
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
     List<Doctor_Schedule> schedule = Model.Doctor_Schedule.Where(x => x.DR_FID == Model.DR_ID).ToList();
     Patient pat = (Patient)Session["Patient"];
     var current = DateTime.Today;
 }
+@functions{
+    //public string splitTime(string StartTime, string EndTime, int Duration = 60)
+    //{
+    //    List<string> ReturnArray = new List<string>();
+    //    var startTime = DateTime.Parse(StartTime);
+    //    var endTime = DateTime.Parse(EndTime);
 
+    //    var AddMins = Duration * 60;
+
+    //    while (startTime <= endTime)
+    //    {
+    //        ReturnArray = DateTime.Parse("G:i", startTime);
+    //        startTime += AddMins;
+    //    }
+
+    //    return ReturnArray;
+    //}
+
+
+
+
+}
 <!-- ***** Breadcumb Area Start ***** -->
 <section class="breadcumb-area bg-img gradient-background-overlay" style="background-image: url(/Content/Customer/img/bg-img/breadcumb2.jpg); height: 300px">
     <div class="container h-100">
@@ -61,38 +83,50 @@
                 </thead>
                 @foreach (var sch in schedule)
                 {
+                    DateTime localDate = DateTime.Now;
+                    DateTime scheduleDate = Convert.ToDateTime(@sch.AVAILABLE_DAYS);
+                    int result = DateTime.Compare(scheduleDate, localDate);
+
                     using (Html.BeginForm("Create", "Appointments", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-                        <tr>
-                            <td>@sch.AVAILABLE_DAYS</td>
-                            <td>@sch.START_TIME</td>
-                            <td>@sch.END_TIME</td>
-                            <td>@sch.MAX_APPOINTMENTS</td>
-                            <td>@sch.MAX_APPOINTMENTS</td>
-                            <td>
-                                <input type="hidden" name="APPOINTMENT_DATE" value="@sch.AVAILABLE_DAYS" />
-                                <input type="hidden" name="SCHEDULE_FID" value="@sch.SCHEDULE_ID" />
-                                <select style="width: 100%" name="TIME_SLOT">
-                                    <option value="1:00 - 2:00 PM">1:00 - 2:00 PM</option>
-                                    <option value="2:00 - 3:00 PM">2:00 - 3:00 PM</option>
-                                    <option value="4:00 - 5:00 PM">4:00 - 5:00 PM</option>
+                        if (result >= 0 )
+                        {
+                            decimal remaningNo = @sch.MAX_APPOINTMENTS - @sch.Appointments.Count();
+                            <tr>
+                                <td>@sch.AVAILABLE_DAYS</td>
+                                <td>@sch.START_TIME</td>
+                                <td>@sch.END_TIME</td>
+                                <td>@sch.MAX_APPOINTMENTS</td>
+                                <td>@remaningNo</td>
+                                <td>
+                                    <input type="hidden" name="APPOINTMENT_DATE" value="@sch.AVAILABLE_DAYS" />
+                                    <input type="hidden" name="SCHEDULE_FID" value="@sch.SCHEDULE_ID" />
+                                    <select style="width: 100%" name="TIME_SLOT">
+                                        <option value="@sch.START_TIME">@sch.START_TIME</option>
+                                        <option value="@sch.START_TIME">@sch.END_TIME</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    @if (pat != null)
+                                    {
+                                        if (remaningNo == 0)
+                                        {
+                                            <p class="alert-danger text-center">Fully Booked</p>
+                                        }
+                                        else
+                                        {
+                                            <Input type="submit" value="Reserve" class="btn btn-success btn-md" />
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p class="alert-danger text-center">login for Book An Appointment</p>
+                                    }
 
-                                </select>
-                            </td>
-                            <td>
-                                @if (pat != null)
-                                {
-                                    <Input type="submit" value="Reserve" class="btn btn-success btn-md" />
-
-                                }
-                                else
-                                {
-                                    <p class="alert-danger text-center">login for Book An Appointment</p>
-                                }
-
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        }
                     }
                 }
             </table>
