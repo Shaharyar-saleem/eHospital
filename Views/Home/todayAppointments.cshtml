@@ -1,0 +1,50 @@
+﻿@using eHospital.Models
+@{
+    Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
+    Doctor doctor = (Doctor)Session["Doctor"];
+    DateTime localDate = DateTime.Now;
+    Model1 db = new Model1();
+    List<Appointment> appointment = db.Appointments.Where(x => x.Doctor_Schedule.DR_FID == doctor.DR_ID).ToList();
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="py-3 text-center">Today's Booked Appointments</h3>
+    </div>
+</div>
+<table class="table table-hover table-striped">
+    <tr class="thead-dark">
+        <th>Patient Id</th>
+        <th>Patient Name</th>
+        <th>Patient Gender</th>
+        <th>Patient City</th>
+        <th>Appointment Date</th>
+        <th>Appointment Slot</th>
+        <th>Appointment Status</th>
+        <th>View</th>
+    </tr>
+
+    @foreach (var app in appointment)
+    {
+        DateTime currentDate = DateTime.Now.Date;
+        DateTime scheduleDate = Convert.ToDateTime(@app.APPOINTMENT_DATE);
+        int result = DateTime.Compare(currentDate, scheduleDate);
+        if (result == 0)
+        {
+            <tr>
+                <td>@app.Patient.PATIENT_ID</td>
+                <td>@app.Patient.PATIENT_NAME</td>
+                <td>@app.Patient.PATIENT_GENDER</td>
+                <td>@app.Patient.PATIENT_CITY</td>
+                <td>@app.APPOINTMENT_DATE</td>
+                <td>@app.TIME_SLOT</td>
+                <td>@app.STATUS</td>
+                <td><a href="@Url.Action("viewAppointment", "Home")" class="btn btn-success btn-sm">View</a></td>
+            </tr>
+        }
+    }
+
+</table>
+
+
+    

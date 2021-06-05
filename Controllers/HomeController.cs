@@ -151,6 +151,16 @@ namespace eHospital.Controllers
             return View();
         }
 
-        
+        //Doctor related actions
+        public ActionResult todayAppointments()
+        {
+            return View();
+        }
+        public ActionResult viewAppointment()
+        {
+            return View();
+        }
+
+
     }
 }

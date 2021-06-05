@@ -83,14 +83,14 @@
                 </thead>
                 @foreach (var sch in schedule)
                 {
-                    DateTime localDate = DateTime.Now;
+                    DateTime localDate = DateTime.Now.Date;
                     DateTime scheduleDate = Convert.ToDateTime(@sch.AVAILABLE_DAYS);
-                    int result = DateTime.Compare(scheduleDate, localDate);
+                    int result = DateTime.Compare(localDate, scheduleDate);
 
                     using (Html.BeginForm("Create", "Appointments", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-                        if (result >= 0 )
+                        if (result <= 0)
                         {
                             decimal remaningNo = @sch.MAX_APPOINTMENTS - @sch.Appointments.Count();
                             <tr>
@@ -128,7 +128,9 @@
                             </tr>
                         }
                     }
+
                 }
+               
             </table>
         </div>
     </div>

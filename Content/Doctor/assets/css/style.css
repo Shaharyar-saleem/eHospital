@@ -14296,7 +14296,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
 	border-radius: 25px;
 	text-transform: capitalize;
 	font-weight: bold;
-	font-size: 16px
+	font-size: 16px;
+	display: none !important;
 }
 
 .fixed-button .btn:focus,
@@ -14311,10 +14312,11 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
 	animation: none
 }
 
-.fixed-button.active {
-	bottom: 50px;
-	opacity: 1
-}
+	.fixed-button.active {
+		bottom: 50px;
+		opacity: 1;
+		display: none !important;
+	}
 
 @-webkit-keyframes pulse {
 	0% {
