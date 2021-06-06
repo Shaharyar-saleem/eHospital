@@ -156,11 +156,18 @@ namespace eHospital.Controllers
         {
             return View();
         }
-        public ActionResult viewAppointment()
+        public ActionResult viewAppointment(int id)
         {
-            return View();
+            Appointment appointment = db.Appointments.Where(x => x.Patient.PATIENT_ID == id).FirstOrDefault();
+            return View(appointment);
         }
-
+        public ActionResult addTreatment(Patient_Treatment treatment)
+        {
+            db.Patient_Treatment.Add(treatment);
+            db.SaveChanges();
+            int P_id = treatment.Appointment.PATIENT_FID;
+            return RedirectToAction("viewAppointment", "Home", new { id = P_id });
+        }
 
     }
 }

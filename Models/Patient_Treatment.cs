@@ -24,6 +24,7 @@ namespace eHospital.Models
         [StringLength(150)]
         public string DESCRIPTION { get; set; }
 
+        
         public virtual Appointment Appointment { get; set; }
     }
 }

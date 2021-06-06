@@ -39,7 +39,7 @@
                 <td>@app.APPOINTMENT_DATE</td>
                 <td>@app.TIME_SLOT</td>
                 <td>@app.STATUS</td>
-                <td><a href="@Url.Action("viewAppointment", "Home")" class="btn btn-success btn-sm">View</a></td>
+                <td><a href="@Url.Action("viewAppointment", "Home", new { id = app.PATIENT_FID })" class="btn btn-success btn-sm">View</a></td>
             </tr>
         }
     }
