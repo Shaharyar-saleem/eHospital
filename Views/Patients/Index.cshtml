@@ -53,13 +53,13 @@
             @Html.DisplayFor(modelItem => item.PATIENT_NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PATIENT_CONTACT)
+            @item.PATIENT_CONTACT.ToString()
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PATIENT_EMAIL)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PATIENT_DOB)
+            @item.PATIENT_DOB.ToLongDateString()
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PATIENT_GENDER)

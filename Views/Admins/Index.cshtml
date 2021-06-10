@@ -49,7 +49,7 @@
             @Html.DisplayFor(modelItem => item.ADMIN_PASSWORD)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ADMIN_CONTACT)
+            @item.ADMIN_CONTACT.ToString()
         </td>
         <td>
             <img width="65px" height="65px" src="@Url.Content(item.ADMIN_PIC)" alt="Alternate Text" />

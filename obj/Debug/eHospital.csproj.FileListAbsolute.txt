@@ -72,7 +72,6 @@ E:\eHospital_FYP\eHospital\bin\System.Web.WebPages.Razor.xml
 E:\eHospital_FYP\eHospital\bin\Newtonsoft.Json.xml
 E:\eHospital_FYP\eHospital\bin\Antlr3.Runtime.pdb
 E:\eHospital_FYP\eHospital\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\eHospital_FYP\eHospital\obj\Debug\eHospital.csprojAssemblyReference.cache
 E:\eHospital_FYP\eHospital\obj\Debug\eHospital.csproj.CoreCompileInputs.cache
 E:\eHospital_FYP\eHospital\obj\Debug\eHospital.csproj.CopyComplete
 E:\eHospital_FYP\eHospital\obj\Debug\eHospital.dll
@@ -82,3 +81,4 @@ E:\eHospital_FYP\eHospital\bin\EntityFramework.SqlServer.dll
 E:\eHospital_FYP\eHospital\bin\EntityFramework.xml
 E:\eHospital_FYP\eHospital\bin\EntityFramework.SqlServer.xml
 E:\eHospital_FYP\eHospital\bin\Itenso.TimePeriod.dll
+E:\eHospital_FYP\eHospital\obj\Debug\eHospital.csprojAssemblyReference.cache

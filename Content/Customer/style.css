@@ -12,7 +12,7 @@
 /* ------------- Index of Stylesheet -------------
 :: 1.0 Import Fonts
 :: 2.0 Import All CSS
-:: 3.0 Base CSS
+:: 3.0 Base CSS.card-body
 :: 4.0 Header Area CSS
 :: 5.0 Welcome Area CSS
 :: 6.0 Book An Appoinment Area
@@ -1951,4 +1951,8 @@ a.discrete {
 .tick-icon {
     color: green;
     font-size: 112px;
+}
+
+.card-body {
+    padding: 1.0rem !important;
 }

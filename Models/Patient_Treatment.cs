@@ -24,7 +24,8 @@ namespace eHospital.Models
         [StringLength(150)]
         public string DESCRIPTION { get; set; }
 
-        
+        [NotMapped]
+        public int P_ID { get; set; }
         public virtual Appointment Appointment { get; set; }
     }
 }

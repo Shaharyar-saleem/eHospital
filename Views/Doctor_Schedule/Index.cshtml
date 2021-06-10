@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<eHospital.Models.Doctor_Schedule>
-
+@using eHospital.Models;
 @{
+    Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
     ViewBag.Title = "Index";
+    Doctor doc = (Doctor)Session["Doctor"];
 }
 
 <h2>Index</h2>
@@ -32,28 +34,35 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doctor.DR_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AVAILABLE_DAYS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.START_TIME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.END_TIME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MAX_APPOINTMENTS)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SCHEDULE_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SCHEDULE_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SCHEDULE_ID })
-        </td>
-    </tr>
+    DateTime currentDate = DateTime.Now.Date;
+    DateTime scheduleDate = Convert.ToDateTime(@item.AVAILABLE_DAYS);
+    int result = DateTime.Compare(currentDate, scheduleDate);
+    if (result <= 0 && item.DR_FID == doc.DR_ID)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Doctor.DR_NAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AVAILABLE_DAYS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.START_TIME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.END_TIME)
+    </td>
+    <td>
+        @item.MAX_APPOINTMENTS.ToString()
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.SCHEDULE_ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.SCHEDULE_ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.SCHEDULE_ID })
+    </td>
+</tr>
+    }
+    
 }
 
 </table>

@@ -4,7 +4,7 @@
     Doctor doctor = (Doctor)Session["Doctor"];
     DateTime localDate = DateTime.Now;
     Model1 db = new Model1();
-    List<Appointment> appointment = db.Appointments.Where(x => x.Doctor_Schedule.DR_FID == doctor.DR_ID).ToList();
+    List<Appointment> appointment = db.Appointments.Where(a => a.Doctor_Schedule.DR_FID == doctor.DR_ID).ToList();
 }
 
 <div class="row">
@@ -36,10 +36,10 @@
                 <td>@app.Patient.PATIENT_NAME</td>
                 <td>@app.Patient.PATIENT_GENDER</td>
                 <td>@app.Patient.PATIENT_CITY</td>
-                <td>@app.APPOINTMENT_DATE</td>
+                <td>@app.APPOINTMENT_DATE.ToLongDateString()</td>
                 <td>@app.TIME_SLOT</td>
                 <td>@app.STATUS</td>
-                <td><a href="@Url.Action("viewAppointment", "Home", new { id = app.PATIENT_FID })" class="btn btn-success btn-sm">View</a></td>
+                <td><a href="@Url.Action("viewAppointment", "Home", new { id = app.APPOINTMENT_ID })" class="btn btn-success btn-sm">View</a></td>
             </tr>
         }
     }

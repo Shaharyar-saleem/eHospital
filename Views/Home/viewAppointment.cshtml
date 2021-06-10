@@ -6,42 +6,44 @@
     Doctor doctor = (Doctor)Session["Doctor"];
     Model1 db = new Model1();
     List<Patient_Treatment> treatment = db.Patient_Treatment.Where(x => x.APPOINTMENT_FID == Model.APPOINTMENT_ID).ToList();
+    Patient patient = db.Patients.Where(x => x.PATIENT_ID == Model.PATIENT_FID).FirstOrDefault();
 }
 <div class="container-fluid pt-2">
     <div class="row">
         <div class="col-md-2">
-            <img src="@Url.Content(Model.Patient.PATIENT_PIC)" alt="" width="100%" />
+            <img src="@Url.Content(patient.PATIENT_PIC)" alt="" width="100%" />
         </div>
         <div class="col-md-5">
             <table class="table table-borderless table-striped">
                 <tr>
                     <th>Patient ID:</th>
-                    <th>@Model.Patient.PATIENT_ID</th>
+                    <th>@patient.PATIENT_ID </th>
                     <th>Name:</th>
-                    <th>@Model.Patient.PATIENT_NAME</th>
+                    <th>@patient.PATIENT_NAME</th>
 
                 </tr>
                 <tr>
                     <th>City:</th>
-                    <th>@Model.Patient.PATIENT_CITY</th>
+                    <th>@patient.PATIENT_CITY</th>
                     <th>Contact Number:</th>
-                    <th>@Model.Patient.PATIENT_CONTACT</th>
+                    <th>@patient.PATIENT_CONTACT</th>
                 </tr>
                 <tr>
                     <th>Gender:</th>
-                    <th>@Model.Patient.PATIENT_GENDER</th>
+                    <th>@patient.PATIENT_GENDER</th>
                     <th>Date of Birth:</th>
-                    <th>@Model.Patient.PATIENT_DOB.ToLongDateString()</th>
+                    <th>@patient.PATIENT_DOB.ToLongDateString()</th>
                 </tr>
             </table>
         </div>
         <div class="col-md-5">
             @using (Html.BeginForm("addTreatment", "Home", FormMethod.Post))
             {
-                    <h4 class="text-center">Add Treatment</h4>
+                    <h4>Add Treatment</h4>
                     <div class="form-group row">
                         <input type="hidden" name="APPOINTMENT_FID" value="@Model.APPOINTMENT_ID" />
-                        <input type="hidden" name="PATIENT_ID" value="@Model.Patient.PATIENT_ID" />
+                        <input type="hidden" name="P_ID" value="@Model.Patient.PATIENT_ID" />
+ 
                         <div class="col-6">
                             <input type="text" class="form-control" placeholder="Symptoms" name="SYMPTOMS">
                         </div>
@@ -59,26 +61,29 @@
 
     <div class="row mt-4">
         <div class="col-md-12">
-            <table class="table table-striped table-borderless">
-                <tr>
-                    <td>Appointment Date</td>
-                    <td>Treated By</td>
-                    <td>Symptoms</td>
-                    <td>Prescription</td>
-                    <td>Description</td>
-                </tr>
-
+            <h4>Treatment History</h4>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-hover">
+                    <tr class="bg-dark" style="color: white">
+                        <td>Appointment Date</td>
+                        <td>Treated By</td>
+                        <td>Symptoms</td>
+                        <td>Prescription</td>
+                        <td>Description</td>
+                    </tr>
                 @foreach (var t in treatment)
                 {
-            <tr>
-                <td>@t.Appointment.APPOINTMENT_DATE</td>
-                <td>@t.Appointment.Doctor_Schedule.Doctor.DR_NAME</td>
-                <td>@t.SYMPTOMS</td>
-                <td>@t.PRESCRIPTION</td>
-                <td>@t.DESCRIPTION</td>
-            </tr>
+                    <tr>
+                        <td>@t.Appointment.APPOINTMENT_DATE.ToLongDateString() </td>
+                        <td>@t.Appointment.Doctor_Schedule.Doctor.DR_NAME</td>
+                        <td>@t.SYMPTOMS</td>
+                        <td>@t.PRESCRIPTION</td>
+                        <td>@t.DESCRIPTION</td>
+                    </tr>
                 }
             </table>
+ 
         </div>
     </div>
 </div>
