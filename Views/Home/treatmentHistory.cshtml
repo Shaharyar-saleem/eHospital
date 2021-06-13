@@ -1,0 +1,34 @@
+﻿@using eHospital.Models
+@{
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+    Patient patient = (Patient)Session["Patient"];
+    Model1 db = new Model1();
+    List<Patient_Treatment> treatment = db.Patient_Treatment.Where(x => x.Appointment.PATIENT_FID == patient.PATIENT_ID && x.Appointment.STATUS == "COMPLETED").ToList();
+}
+
+<h3 class="text-center py-3">Treatment History</h3>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Appointment Date</th>
+        <th>Doctor Name</th>
+        <th>Symptoms</th>
+        <th>Medicin</th>
+        <th>Note</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var treat in treatment)
+    {
+       
+            <tr>
+                <td>@treat.Appointment.APPOINTMENT_DATE.ToLongDateString()</td>
+                <td>@treat.Appointment.Doctor_Schedule.Doctor.DR_NAME</td>
+                <td>@treat.SYMPTOMS</td>
+                <td>@treat.PRESCRIPTION</td>
+                <td>@treat.DESCRIPTION</td>
+                <td>@treat.Appointment.STATUS</td>
+            </tr>
+
+        
+    }
+</table>

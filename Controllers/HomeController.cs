@@ -165,14 +165,22 @@ namespace eHospital.Controllers
         }
         public ActionResult addTreatment(Patient_Treatment treatment)
         {
-            //Appointment app = db.Appointments.Where(x => x.APPOINTMENT_ID == treatment.APPOINTMENT_FID).FirstOrDefault();
-            //app.STATUS = "COMPLETED";
-            //db.Entry(app);
-            //db.SaveChanges();
             db.Patient_Treatment.Add(treatment);
             db.SaveChanges();
             return RedirectToAction("viewAppointment", "Home", new { id = treatment.P_ID });
         }
+
+        public ActionResult treatmentHistory()
+        {
+            return View();
+        }
+        public ActionResult postFeedback(Feedback review)
+        {
+            db.Feedbacks.Add(review);
+            db.SaveChanges();
+            return RedirectToAction("indexPatient");
+        }
+
 
 
     }

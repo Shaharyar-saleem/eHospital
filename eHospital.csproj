@@ -647,6 +647,7 @@
     <Content Include="Views\Blood_Doners\Thanks.cshtml" />
     <Content Include="Views\Home\todayAppointments.cshtml" />
     <Content Include="Views\Home\viewAppointment.cshtml" />
+    <Content Include="Views\Home\treatmentHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account_Images\" />

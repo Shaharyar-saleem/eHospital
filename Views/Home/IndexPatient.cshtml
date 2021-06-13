@@ -1,25 +1,105 @@
-﻿@{ 
+﻿@using eHospital.Models
+@{
     Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+    Patient patient = (Patient)Session["Patient"];
+    Model1 db = new Model1();
+    List<Patient_Treatment> treatment = db.Patient_Treatment.Where(x => x.Appointment.Patient.PATIENT_ID == patient.PATIENT_ID && x.Appointment.STATUS == "COMPLETED").ToList();
 }
+  
 <main class="content">
     <div class="container-fluid p-0">
 
         <div class="row mb-2 mb-xl-3">
             <div class="col-auto d-none d-sm-block">
-                <h3><strong>Patient</strong> Dashboard</h3>
-            </div>
-
-
-        </div>
-        <div class="row">
-            <div class="col-xl-12 d-flex">
-                
+                <h3><strong>Give your valuable</strong> Feedback</h3>
             </div>
         </div>
 
-     
+
+        @foreach (var treat in treatment)
+        {
+            Feedback review = db.Feedbacks.Where(x => x.APPOINTMENT_FID == treat.APPOINTMENT_FID).FirstOrDefault();
+            <div class="row mt-5">
+                <div class="col-md-3">
+                    <img src="@Url.Content(@treat.Appointment.Doctor_Schedule.Doctor.DR_PIC)" alt="Alternate Text" width="250px" />
+                </div>
+                <div class="col-md-5">
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th>Doctor Name:</th>
+                            <th>@treat.Appointment.Doctor_Schedule.Doctor.DR_NAME</th>
+                        </tr>
+                        <tr>
+                            <th>Appointment Date:</th>
+                            <th>@treat.Appointment.APPOINTMENT_DATE.ToLongDateString()</th>
+                        </tr>
+                        <tr>
+                            <th>Syptoms:</th>
+                            <th>@treat.SYMPTOMS</th>
+                        </tr>
+                        <tr>
+                            <th>Medicine:</th>
+                            <th>@treat.PRESCRIPTION</th>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <th>@treat.DESCRIPTION</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    @if (review == null)
+                    {
+                        using (Html.BeginForm("postFeedback", "Home"))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h6>Leave Feedback:</h6>
+                            <div class="rate">
+                                <input type="radio" id="star5" name="RATING" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="RATING" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="RATING" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="RATING" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="RATING" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                            <textarea name="FEEDBACK1"></textarea><br>
+                            <input type="hidden" name="APPOINTMENT_FID" value="@treat.APPOINTMENT_FID" /><br>
+                            <input type="submit" name="Post Review" value="Post Review" class="bg-primary" />
+                        }
+                    }
+
+                    else
+                    {
+                        <p class="bg-success color-white">Review has been given</p>
+                        Feedback rev = db.Feedbacks.Where(x => x.APPOINTMENT_FID == treat.APPOINTMENT_FID).FirstOrDefault();
+                        @rev.FEEDBACK1 <br>
+                        int num = (int)rev.RATING;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (num <= i)
+                            {
+                                <span class="fa fa-star"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-star checked"></span>
+                            }
 
 
+                        }
+
+
+
+
+                    }
+                </div>
+
+            </div>
+        }
 
     </div>
 </main>
