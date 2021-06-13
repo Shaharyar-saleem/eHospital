@@ -53,7 +53,7 @@
                         using (Html.BeginForm("postFeedback", "Home"))
                         {
                             @Html.AntiForgeryToken()
-                            <h6>Leave Feedback:</h6>
+                            <h6><b>Leave Feedback:</b></h6>
                             <div class="rate">
                                 <input type="radio" id="star5" name="RATING" value="5" />
                                 <label for="star5" title="text">5 stars</label>
@@ -74,26 +74,24 @@
 
                     else
                     {
-                        <p class="bg-success color-white">Review has been given</p>
+                        <p class="bg-success color-white p-3">Your Posted Review</p>
                         Feedback rev = db.Feedbacks.Where(x => x.APPOINTMENT_FID == treat.APPOINTMENT_FID).FirstOrDefault();
-                        @rev.FEEDBACK1 <br>
+                        <h4 class="feedback-txt"><i>@rev.FEEDBACK1</i></h4>
+
+                         <br>
                         int num = (int)rev.RATING;
                         for (int i = 0; i < 5; i++)
                         {
-                            if (num <= i)
-                            {
-                                <span class="fa fa-star"></span>
-                            }
-                            else
+                            if (num > i)
                             {
                                 <span class="fa fa-star checked"></span>
                             }
-
+                            else
+                            {
+                                <span class="fa fa-star"></span>
+                            }
 
                         }
-
-
-
 
                     }
                 </div>
