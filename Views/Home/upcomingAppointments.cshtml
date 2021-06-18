@@ -13,12 +13,12 @@
     {
         doctor = (Doctor)Session["Doctor"];
     }
-    List<Appointment> appointment = db.Appointments.Where(a => a.Doctor_Schedule.DR_FID == doctor.DR_ID).ToList();
+    List<Appointment> appointment = db.Appointments.Where(a => a.Doctor_Schedule.DR_FID == doctor.DR_ID && a.STATUS == "PENDING").ToList();
 }
 
 <div class="row">
     <div class="col-md-12">
-        <h3 class="py-3 text-center">Today's Booked Appointments</h3>
+        <h3 class="py-3 text-center">All Upcoming Appointments</h3>
     </div>
 </div>
 <table class="table table-hover table-striped">
@@ -30,8 +30,6 @@
         <th>Appointment Date</th>
         <th>Appointment Slot</th>
         <th>Appointment Status</th>
-        <th>Action</th>
-        <th></th>
     </tr>
 
     @foreach (var app in appointment)
@@ -39,23 +37,20 @@
         DateTime currentDate = DateTime.Now.Date;
         DateTime scheduleDate = Convert.ToDateTime(@app.APPOINTMENT_DATE);
         int result = DateTime.Compare(currentDate, scheduleDate);
-        if (result == 0)
+        if (result >= 0)
         {
-<tr>
-    <td>@app.Patient.PATIENT_ID</td>
-    <td>@app.Patient.PATIENT_NAME</td>
-    <td>@app.Patient.PATIENT_GENDER</td>
-    <td>@app.Patient.PATIENT_CITY</td>
-    <td>@app.APPOINTMENT_DATE.ToLongDateString()</td>
-    <td>@app.TIME_SLOT</td>
-    <td>@app.STATUS</td>
-    <td><a href="@Url.Action("viewAppointment", "Home", new { id = app.APPOINTMENT_ID })" class="btn btn-success btn-sm">View</a></td>
-    <td><a href="@Url.Action("bookDonation", "Home", new { id = app.APPOINTMENT_ID })" class="btn btn-danger btn-sm">Blood</a></td>
-</tr>
+            <tr>
+                <td>@app.Patient.PATIENT_ID</td>
+                <td>@app.Patient.PATIENT_NAME</td>
+                <td>@app.Patient.PATIENT_GENDER</td>
+                <td>@app.Patient.PATIENT_CITY</td>
+                <td>@app.APPOINTMENT_DATE.ToLongDateString()</td>
+                <td>@app.TIME_SLOT</td>
+                <td>@app.STATUS</td>
+            </tr>
         }
     }
 
 </table>
 
 
-    

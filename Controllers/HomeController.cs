@@ -1,5 +1,6 @@
 ﻿using eHospital.Models;
 using Itenso.TimePeriod;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -156,6 +157,11 @@ namespace eHospital.Controllers
         {
             return View();
         }
+
+        public ActionResult upcomingAppointments()
+        {
+            return View();
+        }
         public ActionResult viewAppointment(int id)
         {
             Appointment app = db.Appointments.Where(x => x.APPOINTMENT_ID == id).FirstOrDefault();
@@ -181,7 +187,42 @@ namespace eHospital.Controllers
             return RedirectToAction("indexPatient");
         }
 
+        public ActionResult donors(Blood_Doners donor)
+        {
+            if(donor.BLOOD_GROUP != null)
+            {
+                List<Blood_Doners> doner = db.Blood_Doners.Where(d => d.BLOOD_GROUP == donor.BLOOD_GROUP && d.DONER_STATUS == "Approved").ToList();
+                return View(doner);
+            }
+            else
+            {
+                List<Blood_Doners> doner = db.Blood_Doners.Where(d => d.DONER_STATUS == "Approved").ToList();
+                return View(doner);
+            }
+            
+        }
 
+        public ActionResult bookDonation(Blood_Doners donors)
+        {
+          if(donors != null)
+            {
+                List<Blood_Doners> doner = db.Blood_Doners.Where(d => d.BLOOD_GROUP == donors.BLOOD_GROUP && d.DONER_STATUS == "Approved").ToList();
+                return View(doner);
+            }
+            else
+            {
+                List<Blood_Doners> doner = db.Blood_Doners.Where(d => d.DONER_STATUS == "Approved").ToList();
+                return View();
+            }
+            
+        }
+
+        public ActionResult confirumDonation(Blood_Donation donation)
+        {
+            db.Blood_Donation.Add(donation);
+            db.SaveChanges();
+            return View();
+        }
 
     }
 }

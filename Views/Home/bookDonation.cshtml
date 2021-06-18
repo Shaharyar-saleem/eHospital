@@ -1,0 +1,80 @@
+﻿@using eHospital.Models
+@{
+    Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
+    DateTime localDate = DateTime.Now;
+    Model1 db = new Model1();
+    Doctor doctor = db.Doctors.FirstOrDefault();
+    var url = Url.RequestContext.RouteData.Values["id"];
+
+    if (Session["Doctor"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        doctor = (Doctor)Session["Doctor"];
+    }
+}
+
+<h3 class="text-center pt-3">Blood Donors List</h3>
+<div class="container-fluid">
+    @using (Html.BeginForm("bookDonation", "Home", FormMethod.Post))
+    {
+        <div class="row form-group">
+            <div class="offset-md-2"></div>
+            <div class="col-md-4">
+                <select name="BLOOD_GROUP" class="form-control">
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                    <option value="O+">O+</option>
+                    <option value="AB+">AB+</option>
+                    <option value="O-">O-</option>
+                    <option value="A-">A-</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="Search" class="form-control bg-primary py-2" />
+            </div>
+            <div class="offset-md-2"></div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-striped mt-3">
+                <tr class="thead-dark">
+                    <th>Donor Name</th>
+                    <th>DOB</th>
+                    <th>Blood Group</th>
+                    <th>City</th>
+                    <th>Gender</th>
+                    <th>Cell</th>
+                    <th>Book For</th>
+                </tr>
+
+                @foreach (var d in Model)
+                {
+                    <tr>
+                        <td>@d.DONER_NAME</td>
+                        <td>@d.DONER_DOB</td>
+                        <td>@d.BLOOD_GROUP</td>
+                        <td>@d.DONER_CITY</td>
+                        <td>@d.DONER_GENDER</td>    
+                        <td>@d.DONER_CONTACT</td>
+                        <td>
+                            @using (Html.BeginForm("confirumDonation","Home", FormMethod.Post))
+                            {
+                            <div class="form-inline form-group">
+                                <input type="number" name="APPOINTMENT_FID" value="@url" readonly class="form-control" />
+                                <input type="hidden" name="DONER_FID" value="@d.DONER_ID" />
+                                <input type="submit" name="name" value="Book" class="bg-success form-control" />
+                            </div>
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>
+</div>

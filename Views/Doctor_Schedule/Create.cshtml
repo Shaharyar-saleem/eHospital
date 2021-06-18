@@ -4,7 +4,17 @@
 @{
     Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
     ViewBag.Title = "Create";
-    Doctor doc = (Doctor)Session["Doctor"];
+    Model1 db = new Model1();
+    Doctor doc = db.Doctors.FirstOrDefault();
+
+    if (Session["Doctor"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        doc = (Doctor)Session["Doctor"];
+    }
 
 }
 <h2>Create</h2>
@@ -12,7 +22,11 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    if (doc != null)
+    {
+        @Html.AntiForgeryToken()
+    }
+
 
     <div class="form-horizontal">
         <h4>Doctor_Schedule</h4>

@@ -614,6 +614,9 @@
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\Booking.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
+    <Content Include="Views\Home\donors.cshtml" />
+    <Content Include="Views\Home\bookDonation.cshtml" />
+    <Content Include="Views\Home\confirumDonation.cshtml" />
     <None Include="Views\Home\Services.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
@@ -648,6 +651,7 @@
     <Content Include="Views\Home\todayAppointments.cshtml" />
     <Content Include="Views\Home\viewAppointment.cshtml" />
     <Content Include="Views\Home\treatmentHistory.cshtml" />
+    <Content Include="Views\Home\upcomingAppointments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account_Images\" />

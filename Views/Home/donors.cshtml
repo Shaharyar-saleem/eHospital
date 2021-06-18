@@ -1,0 +1,73 @@
+﻿@model IEnumerable<eHospital.Models.Blood_Doners>
+@using eHospital.Models
+@{
+    Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
+    Model1 db = new Model1();
+    Doctor doctor = db.Doctors.FirstOrDefault();
+
+    if (Session["Doctor"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        doctor = (Doctor)Session["Doctor"];
+    }
+    
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="py-3 text-center">Approved Blood Donors</h3>
+    </div>
+</div>
+
+@using (Html.BeginForm("donors", "Home", FormMethod.Post))
+{
+<div class="row form-group">
+    <div class="offset-md-2"></div>
+    <div class="col-md-4">
+        <select name="BLOOD_GROUP" class="form-control">
+            <option value="A+">A+</option>
+            <option value="B+">B+</option>
+            <option value="O+">O+</option>
+            <option value="AB+">AB+</option>
+            <option value="O-">O-</option>
+            <option value="A-">A-</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <input type="submit" value="Search" class="form-control bg-primary py-2" />
+    </div>
+    <div class="offset-md-2"></div>
+</div>
+}
+<table class="table table-hover table-striped mt-5">
+    <tr class="thead-dark">
+        <th>Donor Name</th>
+        <th>Email</th>
+        <th>Cell</th>
+        <th>DOB</th>
+        <th>Blood Group</th>
+        <th>City</th>
+        <th>Gender</th>
+        <th>Approved By</th>
+    </tr>
+    
+    @foreach (var d in Model)
+    {
+
+        <tr>
+            <td>@d.DONER_NAME</td>
+            <td>@d.DONER_EMAIL</td>
+            <td>@d.DONER_CONTACT</td>
+            <td>@d.DONER_DOB</td>
+            <td>@d.BLOOD_GROUP</td>
+            <td>@d.DONER_CITY</td>
+            <td>@d.DONER_GENDER</td>
+            <td>@d.Admin.ADMIN_NAME</td>
+        </tr>
+    }
+
+</table>

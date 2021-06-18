@@ -3,7 +3,18 @@
 @{
     Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
     ViewBag.Title = "Index";
-    Doctor doc = (Doctor)Session["Doctor"];
+    Model1 db = new Model1();
+    Doctor doc = db.Doctors.FirstOrDefault();
+
+    if (Session["Doctor"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        doc = (Doctor)Session["Doctor"];
+    }
+
 }
 
 <h2>Index</h2>

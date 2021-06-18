@@ -6,6 +6,8 @@
     List<Doctor_Schedule> schedule = Model.Doctor_Schedule.Where(x => x.DR_FID == Model.DR_ID).ToList();
     Patient pat = (Patient)Session["Patient"];
     var current = DateTime.Today;
+    Model1 db = new Model1();
+    List<Feedback> review = db.Feedbacks.Where(x => x.Appointment.Doctor_Schedule.Doctor.DR_ID == Model.DR_ID).ToList();
 }
 @functions{
     //public string splitTime(string StartTime, string EndTime, int Duration = 60)
@@ -130,10 +132,48 @@
                     }
 
                 }
-               
+
             </table>
         </div>
     </div>
+
+    <!-- ***** reviews area stats here ***** -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h3>@Model.DR_NAME's Reviews</h3>
+        </div>
+        <div class="col-md-6">
+            @foreach (var feedback in review)
+            {
+                <div class="media">
+                    <div class="media-left">
+                        <img src="@Url.Content(feedback.Appointment.Patient.PATIENT_PIC)" class="media-object" style="width:60px">
+                    </div>
+                    <div class="media-body pl-3">
+                        <h4 class="media-heading"></h4>
+                        @{
+                            int num = (int)feedback.RATING;
+                        }
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            if (num > i)
+                            {
+                                <span class="fa fa-star checked"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-star"></span>
+                            }
+
+                        }
+                        <h6>@feedback.FEEDBACK1</h6>
+                    </div>
+                </div>
+                <hr>
+            }
+        </div>
+    </div>
+    <!-- ***** reviews area ends here ***** -->
 </div>
 
 

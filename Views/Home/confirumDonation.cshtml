@@ -1,0 +1,19 @@
+﻿@model eHospital.Models.Blood_Donation
+@using eHospital.Models
+@{
+    Layout = "~/Views/Shared/_LayoutDoctor.cshtml";
+    Model1 db = new Model1();
+    Doctor doctor = db.Doctors.FirstOrDefault();
+
+    if (Session["Doctor"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        doctor = (Doctor)Session["Doctor"];
+    }
+
+}
+
+    <h1 class="text-center my-5" style="color: green">Blood Donation Confirumed</h1>
