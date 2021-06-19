@@ -1,18 +1,20 @@
 ﻿@model eHospital.Models.Patient
 @using eHospital.Models;
 @{
-
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
     ViewBag.Title = "Details";
-    Admin adm = (Admin)Session["Admin"];
-    if(adm != null)
+ 
+    Model1 db = new Model1();
+    Patient pat = db.Patients.FirstOrDefault();
+
+    if (Session["Patient"] == null)
     {
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        Response.Redirect("/Home/logIn");
     }
     else
     {
-        Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+        pat = (Patient)Session["Patient"];
     }
-
 }
 
 <h2>Details</h2>

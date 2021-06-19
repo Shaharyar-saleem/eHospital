@@ -15,9 +15,9 @@ namespace eHospital.Controllers
         private Model1 db = new Model1();
 
         // GET: Patients
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View(db.Patients.ToList());
+            return View(db.Patients.Where(x=>x.PATIENT_ID == id).ToList());
         }
 
         // GET: Patients/Details/5

@@ -220,5 +220,14 @@ namespace eHospital.Controllers
             return View();
         }
 
+        public ActionResult registeredPatients()
+        {
+            return View();
+        }
+
+        public ActionResult checkout()
+        {
+            return View();
+        }
     }
 }

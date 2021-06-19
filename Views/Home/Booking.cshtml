@@ -89,12 +89,12 @@
                     DateTime scheduleDate = Convert.ToDateTime(@sch.AVAILABLE_DAYS);
                     int result = DateTime.Compare(localDate, scheduleDate);
 
-                    using (Html.BeginForm("Create", "Appointments", FormMethod.Post))
+                    //using (Html.BeginForm("Create", "Appointments", FormMethod.Post))
+
+
+                    if (result <= 0)
                     {
-                        @Html.AntiForgeryToken()
-                        if (result <= 0)
-                        {
-                            decimal remaningNo = @sch.MAX_APPOINTMENTS - @sch.Appointments.Count();
+                        decimal remaningNo = @sch.MAX_APPOINTMENTS - @sch.Appointments.Count();
                             <tr>
                                 <td>@sch.AVAILABLE_DAYS</td>
                                 <td>@sch.START_TIME</td>
@@ -118,6 +118,7 @@
                                         }
                                         else
                                         {
+
                                             <Input type="submit" value="Book" class="btn btn-success btn-md" />
                                         }
                                     }
@@ -129,7 +130,7 @@
                                 </td>
                             </tr>
                         }
-                    }
+
 
                 }
 
@@ -139,40 +140,52 @@
 
     <!-- ***** reviews area stats here ***** -->
     <div class="row mt-5">
-        <div class="col-md-12">
-            <h3>@Model.DR_NAME's Reviews</h3>
-        </div>
+        <div class="offset-3"></div>
         <div class="col-md-6">
-            @foreach (var feedback in review)
-            {
-                <div class="media">
-                    <div class="media-left">
-                        <img src="@Url.Content(feedback.Appointment.Patient.PATIENT_PIC)" class="media-object" style="width:60px">
-                    </div>
-                    <div class="media-body pl-3">
-                        <h4 class="media-heading"></h4>
-                        @{
-                            int num = (int)feedback.RATING;
-                        }
-                        @for (int i = 0; i < 5; i++)
-                        {
-                            if (num > i)
-                            {
-                                <span class="fa fa-star checked"></span>
-                            }
-                            else
-                            {
-                                <span class="fa fa-star"></span>
-                            }
-
-                        }
-                        <h6>@feedback.FEEDBACK1</h6>
-                    </div>
-                </div>
-                <hr>
-            }
+            <h3 class="text-center">@Model.DR_NAME's Reviews</h3>
         </div>
+        <div class="offset-3"></div>
     </div>
+    <div class="row">
+        <div class="offset-2"></div>
+        <div class="col-md-8">
+            <table class="table table-hover">
+                @foreach (var feedback in review)
+                {
+                    <tr>
+                        <th>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img src="@Url.Content(feedback.Appointment.Patient.PATIENT_PIC)" class="media-object img-circle img-rounded" style="width:60px">
+                                </div>
+                                <div class="media-body pl-3">
+                                    <h4 class="media-heading"></h4>
+                                    @{
+                                        int num = (int)feedback.RATING;
+                                    }
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        if (num > i)
+                                        {
+                                            <span class="fa fa-star checked"></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="fa fa-star"></span>
+                                        }
+
+                                    }
+                                    <p><i>@feedback.FEEDBACK1</i></p>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="offset-2"></div>
+    </div>
+   
     <!-- ***** reviews area ends here ***** -->
 </div>
 

@@ -1,0 +1,84 @@
+﻿
+@using eHospital.Models;
+
+@{
+    ViewBag.Title = "Index";
+
+
+    Model1 db = new Model1();
+    Admin adm = db.Admins.FirstOrDefault();
+    List<Patient> patient = db.Patients.Where(x => x.PATIENT_ID != null).ToList();
+    if (Session["Admin"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        adm = (Admin)Session["Admin"];
+    }
+
+
+}
+
+<h2 class="py-4 text-center">Registered Patients</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Patient Name
+        </th>
+        <th>
+            Contact
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            DOB
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in patient)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PATIENT_NAME)
+            </td>
+            <td>
+                @item.PATIENT_CONTACT.ToString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PATIENT_EMAIL)
+            </td>
+            <td>
+                @item.PATIENT_DOB.ToLongDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PATIENT_GENDER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PATIENT_CITY)
+            </td>
+            <td>
+                <img width="60px" height="60px" src="@Url.Content(item.PATIENT_PIC)" alt="Alternate Text" />
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.PATIENT_ID })
+            </td>
+        </tr>
+    }
+
+</table>

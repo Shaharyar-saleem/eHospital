@@ -1,8 +1,18 @@
 ﻿@using eHospital.Models
 @{
     Layout = "~/Views/Shared/_LayoutPatient.cshtml";
-    Patient patient = (Patient)Session["Patient"];
     Model1 db = new Model1();
+  
+    Patient patient = db.Patients.FirstOrDefault();
+
+    if (Session["Patient"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        patient = (Patient)Session["Patient"];
+    }
     List<Patient_Treatment> treatment = db.Patient_Treatment.Where(x => x.Appointment.PATIENT_FID == patient.PATIENT_ID && x.Appointment.STATUS == "COMPLETED").ToList();
 }
 

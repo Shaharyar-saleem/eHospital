@@ -2,17 +2,22 @@
 @using eHospital.Models;
 
 @{
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
     ViewBag.Title = "Index";
-    Admin adm = (Admin)Session["Admin"];
-    Patient pat = (Patient)Session["Patient"];
-    if(pat != null)
+
+
+    Model1 db = new Model1();
+    Patient pat = db.Patients.FirstOrDefault();
+
+    if (Session["Patient"] == null)
     {
-        Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+        Response.Redirect("/Home/logIn");
     }
     else
     {
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        pat = (Patient)Session["Patient"];
     }
+
 
 }
 
@@ -71,7 +76,8 @@
             <img width="60px" height="60px" src="@Url.Content(item.PATIENT_PIC)" alt="Alternate Text" />
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.PATIENT_ID })
+            @Html.ActionLink("Details", "Details", new { id = item.PATIENT_ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.PATIENT_ID })
         </td>
     </tr>
 }

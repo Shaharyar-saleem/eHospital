@@ -1,8 +1,18 @@
 ﻿@using eHospital.Models
 @{
     Layout = "~/Views/Shared/_LayoutPatient.cshtml";
-    Patient patient = (Patient)Session["Patient"];
+
     Model1 db = new Model1();
+    Patient patient = db.Patients.FirstOrDefault();
+
+    if (Session["Patient"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        patient = (Patient)Session["Patient"];
+    }
     List<Patient_Treatment> treatment = db.Patient_Treatment.Where(x => x.Appointment.Patient.PATIENT_ID == patient.PATIENT_ID && x.Appointment.STATUS == "COMPLETED").ToList();
 }
   
@@ -52,7 +62,7 @@
                     {
                         using (Html.BeginForm("postFeedback", "Home"))
                         {
-                            @Html.AntiForgeryToken()
+                            @*@Html.AntiForgeryToken()*@
                             <h6><b>Leave Feedback:</b></h6>
                             <div class="rate">
                                 <input type="radio" id="star5" name="RATING" value="5" />

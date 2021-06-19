@@ -619,11 +619,13 @@
     <Content Include="Views\Home\donors.cshtml" />
     <Content Include="Views\Home\bookDonation.cshtml" />
     <Content Include="Views\Home\confirumDonation.cshtml" />
+    <Content Include="Views\Home\checkout.cshtml" />
     <None Include="Views\Home\Services.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\SingleBlog.cshtml" />
     <None Include="Views\Home\IndexAdmin.cshtml" />
+    <None Include="Views\Home\registeredPatients.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

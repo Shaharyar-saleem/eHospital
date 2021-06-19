@@ -1,8 +1,19 @@
 ﻿@model eHospital.Models.Patient
-
+@using eHospital.Models
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+    Model1 db = new Model1();
+    Patient pat = db.Patients.FirstOrDefault();
+
+    if (Session["Patient"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        pat = (Patient)Session["Patient"];
+    }
 }
 
 <h2>Delete</h2>
