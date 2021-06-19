@@ -51,11 +51,8 @@ namespace eHospital.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Appointment appointment)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                Patient pat = (Patient)Session["Patient"];
-                appointment.PATIENT_FID = pat.PATIENT_ID;
-                appointment.STATUS = "PENDING";
                 db.Appointments.Add(appointment);
                 db.SaveChanges();
                 return RedirectToAction("Confirmation", "Home");

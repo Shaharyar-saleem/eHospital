@@ -1,8 +1,164 @@
-﻿@using eHospital.Models
-@{ 
-
+﻿@model eHospital.Models.Doctor_Schedule
+@using eHospital.Models
+@{
+    Model1 db = new Model1();
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
     Patient pat = (Patient)Session["Patient"];
+    List<Appointment> appointment = db.Appointments.Where(x => x.SCHEDULE_FID == Model.SCHEDULE_ID).ToList();
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- ***** Breadcumb Area Start ***** -->
+<section class="breadcumb-area bg-img gradient-background-overlay" style="background-image: url(/Content/Customer/img/bg-img/breadcumb2.jpg); height: 300px">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-content">
+                    <h3 class="breadcumb-title text-center">Book an Appointment</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Breadcumb Area End ***** -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Patient Information:</h5>
+            @if (pat != null)
+            {
+                <table class="table table-striped mt-3">
+                    <tr>
+                        <th>Patient Name:</th>
+                        <td>@pat.PATIENT_NAME</td>
+                    </tr>
+                    <tr>
+                        <th>Patient Email:</th>
+                        <td>@pat.PATIENT_EMAIL</td>
+                    </tr>
+                    <tr>
+                        <th>Cell Number:</th>
+                        <td>@pat.PATIENT_CONTACT</td>
+                    </tr>
+                    <tr>
+                        <th>Patient City:</th>
+                        <td>@pat.PATIENT_CITY</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor Name:</th>
+                        <td>@Model.Doctor.DR_NAME</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor Qualification</th>
+                        <td>@Model.Doctor.DR_QUALIFICATION</td>
+                    </tr>
+                    <tr>
+                        <th>Department:</th>
+                        <td>@Model.Doctor.Department.DEPARTMENT_NAME</td>
+                    </tr>
+                </table>
 
-<h1>Checkout page</h1>
+            }
+            else
+            {
+                @*<p class="warning bg-danger">Please log in for Book an Appoitment</p>*@
+                Response.Redirect("/Home/logIn");
+            }
+
+        </div>
+
+        <div class="col-md-8">
+            <h5>Appointemnt Detail:</h5>
+            @using (Html.BeginForm("Create", "Appointments", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mt-3">
+                    <input type="hidden" value="@pat.PATIENT_ID" name="PATIENT_FID" />
+                    <input type="hidden" value="@Model.SCHEDULE_ID" name="SCHEDULE_FID" />
+                    <input type="hidden" name="STATUS" value="PENDING" />
+                    <label>Appointment Date:</label>
+                    <input type="date" value="@Model.AVAILABLE_DAYS" name="APPOINTMENT_DATE" class="form-control" readonly />
+                    <label>Time Slot:</label>
+                    <div id="slot"></div>
+                    <input type="submit" value="Book NOW" />
+                   
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+
+    window.addEventListener('mousewheel', function (e) {
+        e.preventDefault();
+    }, { passive: false });
+    $(function () {
+        var starttime = "08:30:00";
+        var endtime = "15:30:00";
+        var interval = "15";
+        var startTimeInMin = convertToMin(starttime);
+        var endTimeInMin = convertToMin(endtime);
+
+        timeIntervel = parseInt(endTimeInMin - startTimeInMin) / (parseInt(interval) * 60);
+
+        nextSlot = starttime;
+
+        slotArra = [nextSlot];
+        for (i = 0; i < timeIntervel; i++) {
+            var nextSlot = getNextSlot(nextSlot, interval);
+            slotArra.push(nextSlot);
+        }
+
+
+
+        var frag = document.createDocumentFragment();
+
+        for (choices in slotArra) {
+            var p_tag = document.createElement('span');
+            var label = document.createElement('label');
+            var label_text = document.createTextNode(slotArra[choices]);
+
+            var with_out_colon = slotArra[choices];
+            with_out_colon = with_out_colon.replace(/:/g, ''); // str = 'asd';
+            label.setAttribute('for', 'slot_' + with_out_colon);
+
+            var choiceSelection = document.createElement('input');
+            choiceSelection.setAttribute('value', slotArra[choices]);
+            choiceSelection.setAttribute('type', 'radio');
+            choiceSelection.setAttribute('name', 'TIME_SLOT');
+            choiceSelection.setAttribute('class', 'slot');
+            choiceSelection.setAttribute('id', 'slot_' + with_out_colon);
+            p_tag.appendChild(choiceSelection);
+            label.appendChild(label_text);
+            p_tag.appendChild(label);
+            frag.appendChild(p_tag);
+        }
+
+        document.getElementById('slot').appendChild(frag);
+
+
+        function convertToMin(inputTime) {
+            inputTime = inputTime.split(':');
+            var hrinseconds = parseInt(inputTime[0]) * 3600;
+            var mininseconds = parseInt(inputTime[1]) * 60;
+            return parseInt(hrinseconds) + parseInt(mininseconds) + parseInt(inputTime[2])
+        }
+
+        function getNextSlot(starttime, interval) {
+            var piece = starttime.split(':');
+            var hour = piece[0];
+            var minutes = piece[1];
+            var seconds = piece[2];
+            var newMinute = parseInt(minutes) + parseInt(interval)
+            if (newMinute >= 60) {
+                hour = parseInt(hour) + 1;
+                newMinute = newMinute % 60
+                if (newMinute == 0)
+                    newMinute = '00';
+            }
+            var newTim = hour + ':' + newMinute;
+            return newTim;
+        }
+    })
+</script>

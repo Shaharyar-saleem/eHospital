@@ -225,9 +225,10 @@ namespace eHospital.Controllers
             return View();
         }
 
-        public ActionResult checkout()
+        public ActionResult checkout(int id)
         {
-            return View();
+            Doctor_Schedule schedule = db.Doctor_Schedule.Where(x => x.SCHEDULE_ID == id).FirstOrDefault();
+            return View(schedule);
         }
     }
 }

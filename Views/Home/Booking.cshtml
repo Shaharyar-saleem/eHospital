@@ -79,7 +79,6 @@
                         <th>End Time</th>
                         <th>Maximum No</th>
                         <th>Available No</th>
-                        <th>Time Slot</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -102,31 +101,7 @@
                                 <td>@sch.MAX_APPOINTMENTS</td>
                                 <td>@remaningNo</td>
                                 <td>
-                                    <input type="hidden" name="APPOINTMENT_DATE" value="@sch.AVAILABLE_DAYS" />
-                                    <input type="hidden" name="SCHEDULE_FID" value="@sch.SCHEDULE_ID" />
-                                    <select style="width: 100%" name="TIME_SLOT">
-                                        <option value="@sch.START_TIME">@sch.START_TIME</option>
-                                        <option value="@sch.START_TIME">@sch.END_TIME</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    @if (pat != null)
-                                    {
-                                        if (remaningNo == 0)
-                                        {
-                                            <p class="alert-danger text-center">Fully Booked</p>
-                                        }
-                                        else
-                                        {
-
-                                            <Input type="submit" value="Book" class="btn btn-success btn-md" />
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <p class="alert-danger text-center">login for Book An Appointment</p>
-                                    }
-
+                                        <a href="@Url.Action("checkout","Home", new { id= sch.SCHEDULE_ID })" class="btn btn-success">Book Now</a>
                                 </td>
                             </tr>
                         }

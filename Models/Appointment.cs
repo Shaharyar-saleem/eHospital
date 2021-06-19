@@ -35,6 +35,9 @@ namespace eHospital.Models
         [StringLength(20)]
         public string STATUS { get; set; }
 
+        [NotMapped]
+        public string PaymentMethod { get; set; }
+
         public virtual Doctor_Schedule Doctor_Schedule { get; set; }
 
         public virtual Patient Patient { get; set; }
