@@ -146,6 +146,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\Patient_TreatmentController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,6 +158,7 @@
     <Compile Include="Models\Blog_Comment.cs" />
     <Compile Include="Models\Blood_Donation.cs" />
     <Compile Include="Models\Blood_Doners.cs" />
+    <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Doctor_Schedule.cs" />
@@ -652,6 +654,7 @@
     <Content Include="Views\Home\viewAppointment.cshtml" />
     <Content Include="Views\Home\treatmentHistory.cshtml" />
     <Content Include="Views\Home\upcomingAppointments.cshtml" />
+    <Content Include="Views\Reports\appointmentsReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account_Images\" />
