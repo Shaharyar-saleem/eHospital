@@ -1,0 +1,48 @@
+﻿@using eHospital.Models
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    Appointment app = (Appointment)Session["Booking"];
+}
+<!-- ***** Breadcumb Area Start ***** -->
+<section class="breadcumb-area bg-img gradient-background-overlay" style="background-image: url(/Content/Customer/img/bg-img/breadcumb2.jpg); height: 300px">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-content text-center">
+                    <h3 class="breadcumb-title text-center">Booking Confirmation</h3>
+                    <i class="fa fa-check" style="color: green; font-size: 66px"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Breadcumb Area End ***** -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <p>Dear, Your booking detail is as following</p>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>Patient Name:</th>
+                    <td>@app.Patient.PATIENT_NAME</td>
+                    <th>Doctor Name:</th>
+                    <td>@app.Doctor_Schedule.Doctor.DR_NAME</td>
+                </tr>
+                <tr>
+                    <th>Appointment Date:</th>
+                    <td>@app.APPOINTMENT_DATE.ToLongDateString()</td>
+                    <th>Time Slot:</th>
+                    <td>@app.TIME_SLOT</td>
+                </tr>
+                <tr>
+                    <th>Specialization:</th>
+                    <td>@app.Doctor_Schedule.Doctor.Department.DEPARTMENT_NAME</td>
+                    <th>Appointment Fee:</th>
+                    <td>@app.Doctor_Schedule.Doctor.DR_FEE</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

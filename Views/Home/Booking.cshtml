@@ -101,7 +101,15 @@
                                 <td>@sch.MAX_APPOINTMENTS</td>
                                 <td>@remaningNo</td>
                                 <td>
+                                    @if (pat != null)
+                                    {
                                         <a href="@Url.Action("checkout","Home", new { id= sch.SCHEDULE_ID })" class="btn btn-success">Book Now</a>
+                                    }
+                                    else
+                                    {
+                                       <p>Login for book and appointment</p>
+                                    }
+
                                 </td>
                             </tr>
                         }

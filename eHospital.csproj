@@ -620,6 +620,7 @@
     <Content Include="Views\Home\bookDonation.cshtml" />
     <Content Include="Views\Home\confirumDonation.cshtml" />
     <Content Include="Views\Home\checkout.cshtml" />
+    <Content Include="Views\Home\availableDoctors.cshtml" />
     <None Include="Views\Home\Services.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
@@ -657,6 +658,7 @@
     <Content Include="Views\Home\treatmentHistory.cshtml" />
     <Content Include="Views\Home\upcomingAppointments.cshtml" />
     <Content Include="Views\Reports\appointmentsReport.cshtml" />
+    <Content Include="Views\Home\thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account_Images\" />

@@ -81,6 +81,11 @@
             background: #58589259;
             border-left: 3px solid blue;
         }
+        .slot{
+            background-color: red !important;
+        }
+
+        
     </style>
     @*Jquery CDN*@
     
@@ -304,6 +309,30 @@
     <!-- Active js -->
     <script src="~/Content/Customer/js/active.js"></script>
 
+    <script>
+        $('#recipeCarousel').carousel({
+            interval: 10000
+        })
+
+        $('.carousel .carousel-item').each(function () {
+            var minPerSlide = 3;
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < minPerSlide; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+    </script>
 </body>
 
 </html>

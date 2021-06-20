@@ -1,0 +1,59 @@
+﻿@using eHospital.Models
+@{
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+
+    Model1 db = new Model1();
+    Patient patient = db.Patients.FirstOrDefault();
+    List<Doctor> doc = db.Doctors.ToList();
+    if (Session["Patient"] == null)
+    {
+        Response.Redirect("/Home/logIn");
+    }
+    else
+    {
+        patient = (Patient)Session["Patient"];
+    }
+
+}
+
+<!-- ***** Book An Appoinment Area Start ***** -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 my-5 text-center">
+            <h1>Available Doctors</h1>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var dr in doc)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="@Url.Content(dr.DR_PIC)" alt="Card image" style="height: 350px;">
+                    <div class="card-body table table-striped">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Doctor Name:</th>
+                                <td>DR. @dr.DR_NAME</td>
+                            </tr>
+                            <tr>
+                                <th>Qualification:</th>
+                                <td>@dr.DR_QUALIFICATION</td>
+                            </tr>
+                            <tr>
+                                <th>Department:</th>
+                                <td>@dr.Department.DEPARTMENT_NAME</td>
+                            </tr>
+                            <tr>
+                                <th>Appointment Fee:</th>
+                                <td>$ @dr.DR_FEE</td>
+                            </tr>
+                        </table>
+                        <a href="@Url.Action("Booking","Home", new { id = dr.DR_ID })" class="btn btn-primary mt-3" style="width: 100%">Book an Appointment</a>
+                    </div>
+                </div>
+                <br>
+            </div>
+        }
+    </div>
+</div>
+<!-- ***** Book An Appoinment Area End ***** -->

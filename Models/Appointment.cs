@@ -38,6 +38,8 @@ namespace eHospital.Models
         [NotMapped]
         public string PaymentMethod { get; set; }
 
+        [NotMapped]
+        public decimal DR_FEE { get; set; }
         public virtual Doctor_Schedule Doctor_Schedule { get; set; }
 
         public virtual Patient Patient { get; set; }

@@ -20,7 +20,7 @@
     </div>
 </section>
 <!-- ***** Breadcumb Area End ***** -->
-<div class="container-fluid mt-3">
+<div class="container mt-3">
     <div class="row">
         <div class="col-md-4">
             <h5>Patient Information:</h5>
@@ -68,21 +68,25 @@
 
         <div class="col-md-8">
             <h5>Appointemnt Detail:</h5>
-            @using (Html.BeginForm("Create", "Appointments", FormMethod.Post))
+            @using (Html.BeginForm("createAppointment", "Home", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
 
-                <div class="mt-3">
-                    <input type="hidden" value="@pat.PATIENT_ID" name="PATIENT_FID" />
-                    <input type="hidden" value="@Model.SCHEDULE_ID" name="SCHEDULE_FID" />
-                    <input type="hidden" name="STATUS" value="PENDING" />
-                    <label>Appointment Date:</label>
-                    <input type="date" value="@Model.AVAILABLE_DAYS" name="APPOINTMENT_DATE" class="form-control" readonly />
-                    <label>Time Slot:</label>
-                    <div id="slot"></div>
-                    <input type="submit" value="Book NOW" />
-                   
-                </div>
+        <div class="mt-3">
+            <input type="hidden" value="@pat.PATIENT_ID" name="PATIENT_FID" />
+            <input type="hidden" value="@Model.SCHEDULE_ID" name="SCHEDULE_FID" />
+            <input type="hidden" name="STATUS" value="PENDING" />
+            <input type="hidden" name="DR_FEE" value="@Model.Doctor.DR_FEE" />
+            <label><b>Appointment Date:</b></label>
+            <input type="date" value="@Model.AVAILABLE_DAYS" name="APPOINTMENT_DATE" class="form-control" readonly />
+            <label><b>Time Slot:</b></label>
+            <div id="slot"></div>
+            <label><b>Payment Method:</b></label><br />
+            <input type="radio" name="PaymentMethod" value="Paypal" />&nbsp;&nbsp;&nbsp;Paypal
+            <input type="radio" name="PaymentMethod" value="Cash-on-Appointment" />&nbsp;&nbsp;&nbsp;Cash on Appointment
+            <input type="submit" value="Proceed & Book" class="btn btn-primary btn-block mt-3" />
+
+        </div>
             }
         </div>
     </div>
@@ -122,15 +126,16 @@
             var with_out_colon = slotArra[choices];
             with_out_colon = with_out_colon.replace(/:/g, ''); // str = 'asd';
             label.setAttribute('for', 'slot_' + with_out_colon);
-
+   
             var choiceSelection = document.createElement('input');
             choiceSelection.setAttribute('value', slotArra[choices]);
             choiceSelection.setAttribute('type', 'radio');
             choiceSelection.setAttribute('name', 'TIME_SLOT');
+            choiceSelection.style.cssText = 'margin-right: 10px;margin-left:10px;';
             choiceSelection.setAttribute('class', 'slot');
             choiceSelection.setAttribute('id', 'slot_' + with_out_colon);
             p_tag.appendChild(choiceSelection);
-            label.appendChild(label_text);
+            label.appendChild(label_text);    
             p_tag.appendChild(label);
             frag.appendChild(p_tag);
         }

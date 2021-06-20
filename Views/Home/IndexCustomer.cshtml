@@ -58,6 +58,47 @@
 </section>
 <!-- ***** Hero Area End ***** -->
 
+<div class="container text-center my-3">
+    <h2 class="font-weight-light">Bootstrap 4 - Multi Item Carousel</h2>
+    <div class="row mx-auto my-auto">
+        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner d-flex" role="listbox">
+                @foreach (var dr in doc)
+                {
+                    <div class="carousel-item">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img class="card-img-top" src="@Url.Content(dr.DR_PIC)" alt="Card image">
+                                <div class="card-body table table-striped">
+                                    <h4 class="card-title">@dr.DR_NAME</h4>
+                                    <ul>
+                                        <li>Qualification: <b>@dr.DR_QUALIFICATION</b></li>
+                                        <li>Department: <b>@dr.Department.DEPARTMENT_NAME</b></li>
+                                        <li>Appointment Fee: <b>RS.@dr.DR_FEE</b></li>
+                                    </ul>
+                                    <a href="@Url.Action("Booking","Home", new { id = dr.DR_ID })" class="btn btn-primary mt-3" style="width: 100%">Book an Appointment</a>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        </div>
+                        }
+
+                    </div>
+                    <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+    </div>
+
+</div>
+
+
     <!-- ***** Book An Appoinment Area Start ***** -->
     <div class="container">
         <div class="row">
