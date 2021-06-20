@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<table class="table">
-    <tr>
+<h2 class="text-center my-3">Varified Blood Donors</h2>
+<table class="table table-striped table-hover">
+    <tr class="table-dark">
         <th>
             Donor Name
         </th>
@@ -72,7 +72,8 @@
         </span>
     </td>
     <td>
-        @Html.ActionLink("Delete", "Delete", new { id = item.DONER_ID })
+
+        <a href="@Url.Action("Delete", new { id = item.DONER_ID })" class="btn btn-danger">Delete</a>
     </td>
 </tr>
 }

@@ -4,63 +4,66 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <div class="mt-5 ml-5">
+        <h2 class="mt-3">Details</h2>
 
-<div>
-    <h4>Admin</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Admin_Role.ROLE_NAME)
-        </dt>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Admin_Role.ROLE_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Admin_Role.ROLE_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Admin_Role.ROLE_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ADMIN_NAME)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ADMIN_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ADMIN_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ADMIN_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ADMIN_EMAIL)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ADMIN_EMAIL)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ADMIN_EMAIL)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ADMIN_EMAIL)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ADMIN_PASSWORD)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ADMIN_PASSWORD)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ADMIN_PASSWORD)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ADMIN_PASSWORD)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ADMIN_CONTACT)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ADMIN_CONTACT)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ADMIN_CONTACT)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ADMIN_CONTACT)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ADMIN_PIC)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ADMIN_PIC)
+                </dt>
 
-        <dd>
-            <img width="100px" height="100px" src="@Url.Content(Model.ADMIN_PIC)" alt="Alternate Text" />
-        </dd>
+                <dd>
+                    <img width="100px" height="100px" src="@Url.Content(Model.ADMIN_PIC)" alt="Alternate Text" />
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ADMIN_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            <a href="@Url.Action("Edit", new { id = Model.ADMIN_ID })" )" class="btn btn-primary">Edit</a> |
+            <a href="@Url.Action("Index")" class="btn btn-success">Back</a>
+
+        </p>
+
+    </div>

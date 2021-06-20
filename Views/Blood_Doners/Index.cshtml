@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<table class="table">
-    <tr>
+<h2 class="text-center my-3">Unvarified Blood Donors</h2>
+<table class="table table-hover table-striped">
+    <tr class="table-dark">
         <th>
             Donor Name
         </th>
@@ -66,8 +66,8 @@
             </span>
         </td>
         <td>
-            @Html.ActionLink("Approve", "Approve", new { id = item.DONER_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.DONER_ID })
+            <a href="@Url.Action("Approve", new { id= item.DONER_ID })" class="btn btn-success">Approve</a> |
+            <a href="@Url.Action("Delete", new { id= item.DONER_ID })" class="btn btn-danger">Delete</a>
         </td>
     </tr>
 }

@@ -4,93 +4,97 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+    <div class="mt-5 ml-5">
+        <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Doctor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Department.DEPARTMENT_NAME)
-        </dt>
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>Doctor</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Department.DEPARTMENT_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Department.DEPARTMENT_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Department.DEPARTMENT_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_NAME)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_QUALIFICATION)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_QUALIFICATION)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_QUALIFICATION)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_QUALIFICATION)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_SALARY)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_SALARY)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_SALARY)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_SALARY)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_CONTACT)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_CONTACT)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_CONTACT)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_CONTACT)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_EMAIL)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_EMAIL)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_EMAIL)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_EMAIL)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_PASSWORD)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_PASSWORD)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_PASSWORD)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_PASSWORD)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_PIC)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_PIC)
+                </dt>
 
-        <dd>
-            <img width="250px" height="250px" src="@Url.Content(Model.DR_PIC)" alt="Alternate Text" />
-        </dd>
+                <dd>
+                    <img width="250px" height="250px" src="@Url.Content(Model.DR_PIC)" alt="Alternate Text" />
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DR_FEE)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DR_FEE)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_FEE)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_FEE)
+                </dd>
 
-    </dl>
+            </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a href="@Url.Action("Index")" class="btn btn-success">Back to List</a>
+                </div>
+            }
         </div>
-    }
-</div>
+
+    </div>

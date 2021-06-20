@@ -4,69 +4,73 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+    <div class="mt-5 ml-5">
+        <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Blog</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Admin.ADMIN_NAME)
-        </dt>
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>Blog</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Admin.ADMIN_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Admin.ADMIN_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Admin.ADMIN_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Blog_Category.CATEGORY_NAME)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Blog_Category.CATEGORY_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Blog_Category.CATEGORY_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Blog_Category.CATEGORY_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_TITLE)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_TITLE)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BLOG_TITLE)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BLOG_TITLE)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_DISCRIPTION)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_DISCRIPTION)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BLOG_DISCRIPTION)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BLOG_DISCRIPTION)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_PIC)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_PIC)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BLOG_PIC)
-        </dd>
+                <dd>
+                    <img src="@Url.Content(Model.BLOG_PIC)" width="250px" />
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_DATE)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_DATE)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BLOG_DATE)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BLOG_DATE)
+                </dd>
 
-    </dl>
+            </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a class="btn btn-primary" href="@Url.Action("Index")">Bacl to List</a>
+                </div>
+            }
         </div>
-    }
-</div>
+
+    </div>

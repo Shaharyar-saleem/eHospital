@@ -54,12 +54,12 @@
                     <td>@appointment.Doctor_Schedule.Doctor.DR_NAME</td>
                     <td>@appointment.Doctor_Schedule.Doctor.Department.DEPARTMENT_NAME</td>
                     <td>@appointment.STATUS</td>
-                    <td>@appointment.Doctor_Schedule.Doctor.DR_FEE</td>
+                    <td>$ @appointment.Doctor_Schedule.Doctor.DR_FEE</td>
                 </tr>
                 totalAmount = totalAmount + @appointment.Doctor_Schedule.Doctor.DR_FEE;
             }
             <tr class="table-light">
-                <td></td>
+                <td></td> 
                 <td></td>
                 <td></td>
                 <td></td>
@@ -67,7 +67,7 @@
                 <td></td>
                 <td></td>
                 <td><b>Total Amount:</b></td>
-                <td style="color: green"><b>@totalAmount</b></td>
+                <td style="color: green"><b>$ @totalAmount</b></td>
             </tr>
         </table>
 

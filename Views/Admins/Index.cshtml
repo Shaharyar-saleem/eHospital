@@ -4,13 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<h2 class="text-center mt-3">List of Accounts</h2>
+
+<p class="ml-3">
+    <a class="btn btn-lg btn-success" href="@Url.Action("Create")">Create New Account</a>
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover table-striped">
+    <tr class="table-dark">
         <th>
             Role
         </th>
@@ -55,9 +56,10 @@
             <img width="65px" height="65px" src="@Url.Content(item.ADMIN_PIC)" alt="Alternate Text" />
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ADMIN_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ADMIN_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ADMIN_ID })
+            <a href="@Url.Action("Edit", new { id= item.ADMIN_ID })" class="btn btn-primary">Edit</a> |
+            <a href="@Url.Action("Details", new { id= item.ADMIN_ID })" class="btn btn-success">Detail</a> |
+            <a href="@Url.Action("Delete", new { id= item.ADMIN_ID })" class="btn btn-danger">Delete</a>
+ 
         </td>
     </tr>
 }

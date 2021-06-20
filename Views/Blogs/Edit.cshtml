@@ -4,70 +4,72 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+    <div class="ml-5 mt-5">
+        <h2>Edit</h2>
 
 
-@using (Html.BeginForm("Edit","Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Blog</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.BLOG_ID)
+        @using (Html.BeginForm("Edit", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            Category
-            <div class="col-md-10">
-                @Html.DropDownList("CATEGORY_FID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CATEGORY_FID, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.BLOG_ID)
+
+                <div class="form-group">
+                    Category
+                    <div class="col-md-10">
+                        @Html.DropDownList("CATEGORY_FID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CATEGORY_FID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BLOG_TITLE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BLOG_TITLE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BLOG_TITLE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Blog Discription
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BLOG_DISCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BLOG_DISCRIPTION, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Blog Image
+                    <div class="col-md-10">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="BLOG_IMAGE" />
+                        <img width="250px" height="250px" src="@Url.Content(Model.BLOG_PIC)" alt="Alternate Text" />
+                        @Html.EditorFor(model => model.BLOG_PIC, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BLOG_PIC, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BLOG_DATE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BLOG_DATE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BLOG_DATE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 mt-3">
+                        <input type="submit" value="Save" class="btn btn-lg btn-success" />
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.BLOG_TITLE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BLOG_TITLE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BLOG_TITLE, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        }
 
-        <div class="form-group">
-            Blog Discription
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BLOG_DISCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BLOG_DISCRIPTION, "", new { @class = "text-danger" })
-                
-            </div>
-        </div>
-
-        <div class="form-group">
-            Blog Image
-            <div class="col-md-10">
-                <input type="file" name="BLOG_IMAGE" />
-                <img width="250px" height="250px" src="@Url.Content(Model.BLOG_PIC)" alt="Alternate Text" />
-                @Html.EditorFor(model => model.BLOG_PIC, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BLOG_PIC, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BLOG_DATE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BLOG_DATE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BLOG_DATE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div>
+            <a href="@Url.Action("Index")" class="btn btn-lg btn-outline-primary mt-3">Back to List</a>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 

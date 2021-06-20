@@ -46,15 +46,15 @@ namespace eHospital.Controllers
         {
             if(id != null)
             {
-                var blog = db.Blogs.Where(x => x.BLOG_ID == id).ToList();
+                List<Blog> blog = db.Blogs.Where(x => x.CATEGORY_FID == id).ToList();
                 return View(blog);
             }
             else
             {
-                var blog = db.Blogs.Where(X => X.BLOG_PIC != null).ToList();
+                List<Blog> blog = db.Blogs.Where(X => X.BLOG_PIC != null).ToList();
                 return View(blog);
             }
-            return View();
+
         }
 
         public ActionResult SingleBlog(int id)

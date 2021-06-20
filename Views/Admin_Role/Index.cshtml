@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center mt-3">Admin Role</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-success btn-lg ml-3">Create Role</a>
 </p>
-<table class="table">
-    <tr>
+<table class="table table-striped">
+    <tr class="table-dark">
         <th>
             Role Name
         </th>
@@ -25,9 +25,9 @@
             @Html.DisplayFor(modelItem => item.ROLE_NAME)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ROLE_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ROLE_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ROLE_ID })
+            <a href="@Url.Action("Edit", new { id= item.ROLE_ID })" class="btn btn-primary">Edit</a> |
+            <a href="@Url.Action("Details", new { id= item.ROLE_ID })" class="btn btn-success">Detail</a> |
+            <a href="@Url.Action("Delete", new { id= item.ROLE_ID })" class="btn btn-danger">Delete</a>
         </td>
     </tr>
 }

@@ -21,7 +21,7 @@
 
 @using (Html.BeginForm("Edit", "Patients", FormMethod.Post, new { enctype= "multipart/form-data" }))
 {
-    @*@Html.AntiForgeryToken()*@
+    @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>Patient</h4>
@@ -89,7 +89,7 @@
             @Html.LabelFor(model => model.PATIENT_PIC, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <img width="250px" height="250px" src="@Url.Content(Model.PATIENT_PIC)" alt="Alternate Text" />
-            <input type="file" name="PATIENT_IMAGE"  />
+            <input type="file" accept=".png, .jpg, .jpeg" name="PATIENT_IMAGE"  />
             </div>
         </div>
 
@@ -102,6 +102,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { id = pat.PATIENT_ID })
 </div>
 

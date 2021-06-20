@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center pt-3">List of all Blogs</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="ml-3">
+    <a href="@Url.Action("Create","Blogs")" class="btn btn-success btn-lg">Create</a>
 </p>
-<table class="table">
-    <tr>
+<table class="table table-striped">
+    <tr class="table-dark">
         <th>
             @Html.DisplayNameFor(model => model.Admin.ADMIN_NAME)
         </th>
@@ -26,7 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.BLOG_DATE)
         </th>
-        <th></th>
+        <th>Action</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,9 +48,10 @@
             @Html.DisplayFor(modelItem => item.BLOG_DATE)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BLOG_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BLOG_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BLOG_ID })
+            <a href="@Url.Action("Edit", new { id=item.BLOG_ID })" class="btn btn-sm btn-primary">Edit</a> |
+            <a href="@Url.Action("Details", new { id=item.BLOG_ID })" class="btn btn-sm btn-success">Detail</a> |
+            <a href="@Url.Action("Delete", new { id=item.BLOG_ID })" class="btn btn-sm btn-danger">Delete</a> 
+            
         </td>
     </tr>
 }

@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center mt-3">Departments</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="ml-3">
+    <a class="btn btn-lg btn-success" href="@Url.Action("Create")">Create New Account</a>
 </p>
-<table class="table">
-    <tr>
+<table class="table table-striped table-hover">
+    <tr class="table-dark">
         <th>
             Department
         </th>
@@ -25,9 +25,9 @@
             @Html.DisplayFor(modelItem => item.DEPARTMENT_NAME)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DEPARTMENT_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DEPARTMENT_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DEPARTMENT_ID })
+            <a href="@Url.Action("Edit", new { id= item.DEPARTMENT_ID })" class="btn btn-primary">Edit</a> |
+            <a href="@Url.Action("Details", new { id= item.DEPARTMENT_ID })" class="btn btn-success">Detail</a> |
+            <a href="@Url.Action("Delete", new { id= item.DEPARTMENT_ID })" class="btn btn-danger">Delete</a>
         </td>
     </tr>
 }

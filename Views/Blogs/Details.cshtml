@@ -4,63 +4,64 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <div class="ml-5 mt-5">
+        <h2>Details</h2>
 
-<div>
-    <h4>Blog</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Admin.ADMIN_NAME)
-        </dt>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Admin.ADMIN_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Admin.ADMIN_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Admin.ADMIN_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Blog_Category.CATEGORY_NAME)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Blog_Category.CATEGORY_NAME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Blog_Category.CATEGORY_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Blog_Category.CATEGORY_NAME)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_TITLE)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_TITLE)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BLOG_TITLE)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BLOG_TITLE)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_DISCRIPTION)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_DISCRIPTION)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BLOG_DISCRIPTION)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BLOG_DISCRIPTION)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_PIC)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_PIC)
+                </dt>
 
-        <dd>
-            <img width="250" height="250" src="@Url.Content(Model.BLOG_PIC)" alt="Alternate Text" />
-        </dd>
+                <dd>
+                    <img width="250" height="250" src="@Url.Content(Model.BLOG_PIC)" alt="Alternate Text" />
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BLOG_DATE)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLOG_DATE)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BLOG_DATE)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BLOG_DATE)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BLOG_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            <a href="@Url.Action("Edit", new { id = Model.BLOG_ID } )" class="btn btn-warning">Edit</a> |
+            <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+        </p>
+    </div>

@@ -23,8 +23,8 @@
 <h2 class="py-4 text-center">Registered Patients</h2>
 
 
-<table class="table">
-    <tr>
+<table class="table table-striped table-hover">
+    <tr class="table-dark">
         <th>
             Patient Name
         </th>
@@ -45,9 +45,6 @@
         </th>
         <th>
             Image
-        </th>
-        <th>
-            Action
         </th>
     </tr>
 
@@ -74,9 +71,6 @@
             </td>
             <td>
                 <img width="60px" height="60px" src="@Url.Content(item.PATIENT_PIC)" alt="Alternate Text" />
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.PATIENT_ID })
             </td>
         </tr>
     }

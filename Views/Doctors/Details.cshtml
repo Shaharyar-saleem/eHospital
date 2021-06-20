@@ -4,87 +4,90 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <div class="mt-5 ml-5">
+        <h2>Details</h2>
 
-<div>
-    <h4>Doctor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Department Name
-        </dt>
+        <div>
+            <h4>Doctor</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Department Name
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Department.DEPARTMENT_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Department.DEPARTMENT_NAME)
+                </dd>
 
-        <dt>
-            Doctor Name
-        </dt>
+                <dt>
+                    Doctor Name
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_NAME)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_NAME)
+                </dd>
 
-        <dt>
-            Qualification
-        </dt>
+                <dt>
+                    Qualification
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_QUALIFICATION)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_QUALIFICATION)
+                </dd>
 
-        <dt>
-            Salary
-        </dt>
+                <dt>
+                    Salary
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_SALARY)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_SALARY)
+                </dd>
 
-        <dt>
-            Contact Number
-        </dt>
+                <dt>
+                    Contact Number
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_CONTACT)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_CONTACT)
+                </dd>
 
-        <dt>
-            Email
-        </dt>
+                <dt>
+                    Email
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_EMAIL)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_EMAIL)
+                </dd>
 
-        <dt>
-            Password
-        </dt>
+                <dt>
+                    Password
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_PASSWORD)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_PASSWORD)
+                </dd>
 
-        <dt>
-           Image
-        </dt>
+                <dt>
+                    Image
+                </dt>
 
-        <dd>
-            <img width="250px" height="250px" src="@Url.Content(Model.DR_PIC)" alt="Alternate Text" />
-        </dd>
+                <dd>
+                    <img width="250px" height="250px" src="@Url.Content(Model.DR_PIC)" alt="Alternate Text" />
+                </dd>
 
-        <dt>
-            Fee
-        </dt>
+                <dt>
+                    Fee
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DR_FEE)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DR_FEE)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DR_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            <a href="@Url.Action("Edit", new { id = Model.DR_ID })" class="btn btn-primary">Edit</a> |
+            <a href="@Url.Action("Index")" class="btn btn-success">Back to List</a>
+        </p>
+
+    </div>
