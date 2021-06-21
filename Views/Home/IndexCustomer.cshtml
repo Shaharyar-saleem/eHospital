@@ -75,11 +75,11 @@
                     <div class="card">
                         <img class="card-img-top" src="@Url.Content(dr.DR_PIC)" alt="Card image">
                         <div class="card-body table table-striped">
-                            <h4 class="card-title">@dr.DR_NAME</h4>
+                            <h4 class="card-title">DR @dr.DR_NAME</h4>
                             <ul>
                                 <li>Qualification: <b>@dr.DR_QUALIFICATION</b></li>
                                 <li>Department: <b>@dr.Department.DEPARTMENT_NAME</b></li>
-                                <li>Appointment Fee: <b>RS.@dr.DR_FEE</b></li>
+                                <li>Appointment Fee: <b>$@dr.DR_FEE</b></li>
                             </ul>
                             <a href="@Url.Action("Booking","Home", new { id = dr.DR_ID })" class="btn btn-primary mt-3" style="width: 100%">Book an Appointment</a>
                         </div>

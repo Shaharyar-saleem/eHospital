@@ -17,7 +17,7 @@
     </div>
 </section>
 <!-- ***** Breadcumb Area End ***** -->
-<div class="container mt-3">
+<div class="container mt-3" id="GFG">
     <div class="row">
         <div class="col-md-12">
             <p>Dear, Your booking detail is as following</p>
@@ -46,3 +46,24 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="offset-4"></div>
+    <div class="col-4">
+        <button onclick="printDiv()" class="btn btn-success">Print the Receipt</button>
+    </div>
+    <div class="offset-4"></div>
+</div>
+<script>
+        function printDiv() {
+            var divContents = document.getElementById("GFG").innerHTML;
+            var a = window.open('', '', 'height=500, width=1100');
+            a.document.write('<html>');
+            a.document.write('<body > <center><img src="../Content/Customer/img/ehospital2.png" style="height: 65px;"><center> <br>');
+            a.document.write(divContents);
+            a.document.getElementById("btn1").style.display = 'none';
+            a.document.getElementById("btn2").style.display = 'none';
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        }
+</script>

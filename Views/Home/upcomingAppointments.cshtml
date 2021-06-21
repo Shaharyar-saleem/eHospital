@@ -13,7 +13,7 @@
     {
         doctor = (Doctor)Session["Doctor"];
     }
-    List<Appointment> appointment = db.Appointments.Where(a => a.Doctor_Schedule.DR_FID == doctor.DR_ID && a.STATUS == "PENDING").ToList();
+    List<Appointment> appointment = db.Appointments.Where(a => a.Doctor_Schedule.DR_FID == doctor.DR_ID && a.STATUS != "COMPLETED").ToList();
 }
 
 <div class="row">
