@@ -91,7 +91,8 @@
             </dl>
         </div>
         <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.PATIENT_ID }) |
-            @Html.ActionLink("Back to List", "Index")
+            <a href="@Url.Action("Edit", new { id= Model.PATIENT_ID })" class="btn btn-primary">Edit</a> |
+            <a href="@Url.Action("Index", new { id= Model.PATIENT_ID })" class="btn btn-success">Back</a>
+
         </p>
     </div>

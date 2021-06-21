@@ -21,11 +21,11 @@
 
 }
 
-<h2>Index</h2>
+<h2 class="text-center mt-3">Profile</h2>
 
 
-<table class="table">
-    <tr>
+<table class="table table-striped">
+    <tr class="table-dark">
         <th>
              Patient Name
         </th>
@@ -76,8 +76,9 @@
             <img width="60px" height="60px" src="@Url.Content(item.PATIENT_PIC)" alt="Alternate Text" />
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.PATIENT_ID })
-            @Html.ActionLink("Edit", "Edit", new { id = item.PATIENT_ID })
+            <a href="@Url.Action("Details", new { id = item.PATIENT_ID })" class="btn btn-primary">Detail</a> |
+            <a href="@Url.Action("Edit", new { id = item.PATIENT_ID })" class="btn btn-success">Edit</a>
+
         </td>
     </tr>
 }
